@@ -29,12 +29,23 @@
         name: homebrew
       tags:
         - package
-    
+
     - name: OS設定
       import_role:
         name: osx_defaults
       tags:
         - osx
+
+    - name: ホスト名変更(ComputerName)
+      become: true
+      shell: "scutil --set ComputerName {{ hostname }}"
+      tags:
+        - hostname
+    - name: ホスト名変更(LocalHostName)
+      become: true
+      shell: "scutil --set LocalHostName {{ hostname }}"
+      tags:
+        - hostname
 
     # pyenvでpythonインストール
 

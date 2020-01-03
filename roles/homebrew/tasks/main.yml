@@ -10,4 +10,3 @@
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"
   loop: "{{ homebrew_cask_packages }}"
-  failed_when: false
