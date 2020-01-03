@@ -1,0 +1,4 @@
+---
+- name: zshrcを読み込み
+  command: source ~/.zshrc
+  listen: source_zshrc

@@ -1,0 +1,31 @@
+---
+- name: 使用可能なシェルの一覧にfishを追加
+  lineinfile:
+    path: /etc/shells
+    line: /usr/local/bin/fish
+    backup: yes
+
+- name: fishをデフォルトシェルに設定
+  become: true
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/local/bin/fish
+  when: ansible_user_shell != "/usr/local/bin/fish"
+
+# - name: シェルがfishに切り替わってるか確認
+#   shell: "echo $SHELL"
+#   register: result
+#   failed_when: result.stdout != "/usr/local/bin/fish"
+#   changed_when: false
+
+- name: fish用ディレクトリ作成
+  file:
+    path: ~/.config/fish/functions/
+    state: directory
+    recurse: true
+# Oh My FishよりFisherの方が後発、かつFisherでOMFのプラグインもインストールできるためこっちを選んだ
+# → https://qiita.com/hennin/items/33758226a0de8c963ddf
+- name: Fisher (fishのパッケージマネージャ)をインストール
+  get_url:
+    url: https://git.io/fisher
+    dest: ~/.config/fish/functions/fisher.fish

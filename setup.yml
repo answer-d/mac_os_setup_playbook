@@ -1,7 +1,6 @@
 ---
 - name: setup mac os
   hosts: all
-  gather_facts: false
 
   pre_tasks:
     - name: HomeBrewのtapリポジトリ追加
@@ -42,16 +41,21 @@
       tags:
         - hostname
 
+    # fish環境構築
+    # Powerline環境構築
+    - name: fish+powerline環境構築
+      import_role:
+        name: fish_powerline
+      tags:
+        - fish_powerline
+
     - name: pyenvでpythonインストール
       import_role:
         name: pyenv_init
       tags:
         - pyenv
 
-    # fish環境構築
-
     # vscode設定(settings.jsonとか拡張機能とか)
 
     # iterm2設定
 
-    # Powerline環境構築

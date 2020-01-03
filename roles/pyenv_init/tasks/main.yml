@@ -12,3 +12,13 @@
     - name: インストールしたpythonをglobalに設定
       shell: 'pyenv versions | grep -v system | xargs -I{} pyenv global {}'
   when: result.stdout_lines|length == 1
+
+- name: pyenvにパスを通す(zsh)
+  blockinfile:
+    dest: ~/.zshrc
+    content: |
+      export PYENV_ROOT="$HOME/.pyenv"
+      export PATH="$PYENV_ROOT/bin:$PATH"
+      eval "$(pyenv init -)"
+    create: true
+  notify: source_zshrc
