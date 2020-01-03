@@ -41,8 +41,6 @@
       tags:
         - hostname
 
-    # fish環境構築
-    # Powerline環境構築
     - name: fish+powerline環境構築
       import_role:
         name: fish_powerline

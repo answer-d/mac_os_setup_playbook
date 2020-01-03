@@ -22,13 +22,14 @@ homebrew_cask_packages:
   - { name: licecap }
   - { name: macvim }
   - { name: slack }
-  - { name: transmit }
+  - { name: transmit, state: absent }
   - { name: vagrant }
   - { name: discord }
   - { name: iterm2 }
   - { name: pycharm-ce }
   - { name: cheatsheet }
   - { name: visual-studio-code }
+  - { name: google-drive-file-stream }
 
 fisher_packages:
   - oh-my-fish/theme-bobthefish
