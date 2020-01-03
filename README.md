@@ -28,3 +28,23 @@
    ```console
    $ ansible-playbook setup.yml
    ```
+
+## Memo
+
+### 全体的に参考にしまくったやつ
+
+- <https://github.com/patorash/ansible-mac-provisioning>
+
+### Macのホスト名設定(CUI)
+
+- <https://qiita.com/HOKARI_Yutaka/items/8047e5ec763adcac2563>
+
+### Ansibleモジュール
+
+- [osx-defaults](https://docs.ansible.com/ansible/latest/modules/osx_defaults_module.html?highlight=mac#osx-defaults-manage-macos-user-defaults)
+- [homebrew_cask](https://docs.ansible.com/ansible/2.5/modules/homebrew_cask_module.html)
+
+### ホスト名命名
+
+- <https://www.houseki-mall.com/eimei.html>
+- <https://www.houseki-mall.com/tanzanite.html>

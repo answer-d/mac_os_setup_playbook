@@ -1,0 +1,28 @@
+---
+- name: ホスト名が変数に設定されているかチェック
+  assert:
+    that:
+      - hostname is defined
+
+- name: ホスト名確認(ComputerName)
+  become: true
+  command: scutil --get ComputerName
+  check_mode: false
+  changed_when: false
+  register: sc_computername
+- name: ホスト名確認(LocalHostName)
+  become: true
+  command: scutil --get LocalHostName
+  check_mode: false
+  changed_when: false
+  register: sc_localhostname
+
+- block:
+  - name: ホスト名変更(ComputerName)
+    become: true
+    shell: "scutil --set ComputerName {{ hostname }}"
+  - name: ホスト名変更(LocalHostName)
+    become: true
+    shell: "scutil --set LocalHostName {{ hostname }}"
+  when:
+    - not hostname in sc_computername.stdout or not hostname in sc_localhostname.stdout

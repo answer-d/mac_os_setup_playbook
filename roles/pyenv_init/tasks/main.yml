@@ -1,0 +1,14 @@
+---
+- name: 何らかのpythonがインストールされているかチェック(されていたら何もしない)
+  command: pyenv versions
+  check_mode: false
+  changed_when: false
+  register: result
+
+- block:
+    - name: python3.Xの最新をインストール
+      shell: 'pyenv install -l | grep -e "^ *3" | grep -v dev | grep -v rc | tail -1 | xargs -I{} pyenv install {}'
+
+    - name: インストールしたpythonをglobalに設定
+      shell: 'pyenv versions | grep -v system | xargs -I{} pyenv global {}'
+  when: result.stdout_lines|length == 1

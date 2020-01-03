@@ -36,18 +36,17 @@
       tags:
         - osx
 
-    - name: ホスト名変更(ComputerName)
-      become: true
-      shell: "scutil --set ComputerName {{ hostname }}"
-      tags:
-        - hostname
-    - name: ホスト名変更(LocalHostName)
-      become: true
-      shell: "scutil --set LocalHostName {{ hostname }}"
+    - name: ホスト名設定
+      import_role:
+        name: hostname
       tags:
         - hostname
 
-    # pyenvでpythonインストール
+    - name: pyenvでpythonインストール
+      import_role:
+        name: pyenv_init
+      tags:
+        - pyenv
 
     # fish環境構築
 
