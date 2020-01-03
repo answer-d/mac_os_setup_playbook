@@ -49,6 +49,8 @@
 - <https://www.houseki-mall.com/eimei.html>
 - <https://www.houseki-mall.com/tanzanite.html>
 
-### fishテーマ
+### fish関連
 
 - <https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/Themes.md>
+- <https://qiita.com/wadaaaan/items/723a9a40925d4a97808a>
+- <https://qiita.com/park-jh/items/557a9d5b470947aef2f5>

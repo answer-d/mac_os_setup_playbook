@@ -40,3 +40,19 @@
   when:
     - not item in result.stdout_lines
   loop: "{{ fisher_packages }}"
+
+- name: Powerlineフォントが既にインストールされているか確認
+  find:
+    paths: ~/Library/Fonts
+    patterns: '*.ttf'
+  register: result
+
+- block:
+  - name: PowerlineインストールのためにGitリポジトリをクローン
+    git:
+      repo: https://github.com/powerline/fonts.git
+      dest: /tmp/powerline_fonts
+      depth: 1
+  - name: Powerlineフォントをインストール
+    shell: /tmp/powerline_fonts/install.sh
+  when: result.matched == 0
