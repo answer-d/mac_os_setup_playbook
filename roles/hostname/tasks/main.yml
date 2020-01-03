@@ -20,9 +20,9 @@
 - block:
   - name: ホスト名変更(ComputerName)
     become: true
-    shell: "scutil --set ComputerName {{ hostname }}"
+    command: "scutil --set ComputerName {{ hostname }}"
   - name: ホスト名変更(LocalHostName)
     become: true
-    shell: "scutil --set LocalHostName {{ hostname }}"
+    command: "scutil --set LocalHostName {{ hostname }}"
   when:
     - not hostname in sc_computername.stdout or not hostname in sc_localhostname.stdout
