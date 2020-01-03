@@ -4,6 +4,7 @@
     path: /etc/shells
     line: /usr/local/bin/fish
     backup: yes
+  become: true
 
 - name: fishをデフォルトシェルに設定
   become: true
