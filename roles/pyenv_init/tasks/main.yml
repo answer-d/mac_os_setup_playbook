@@ -13,12 +13,11 @@
       shell: 'pyenv versions | grep -v system | xargs -I{} pyenv global {}'
   when: result.stdout_lines|length == 1
 
-- name: pyenvにパスを通す(zsh)
+- name: pyenvにパスを通す(fish)
   blockinfile:
-    dest: ~/.zshrc
+    dest: ~/.config/fish/config.fish
     content: |
-      export PYENV_ROOT="$HOME/.pyenv"
-      export PATH="$PYENV_ROOT/bin:$PATH"
-      eval "$(pyenv init -)"
+      # pyenv
+      set PATH $HOME/.pyenv/shims $PATH
+      eval (pyenv init - | source)
     create: true
-  notify: source_zshrc
