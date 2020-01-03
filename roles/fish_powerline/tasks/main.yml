@@ -13,12 +13,6 @@
     shell: /usr/local/bin/fish
   when: ansible_user_shell != "/usr/local/bin/fish"
 
-# - name: シェルがfishに切り替わってるか確認
-#   shell: "echo $SHELL"
-#   register: result
-#   failed_when: result.stdout != "/usr/local/bin/fish"
-#   changed_when: false
-
 - name: fish用ディレクトリ作成
   file:
     path: ~/.config/fish/functions/
@@ -30,3 +24,19 @@
   get_url:
     url: https://git.io/fisher
     dest: ~/.config/fish/functions/fisher.fish
+
+- name: Fishermanのパッケージインストール状況確認
+  shell:
+    cmd: "fisher ls"
+    executable: /usr/local/bin/fish
+  changed_when: false
+  check_mode: false
+  register: result
+
+- name: Fishermanでパッケージインストール
+  shell:
+    cmd: "fisher add {{ item }}"
+    executable: /usr/local/bin/fish
+  when:
+    - not item in result.stdout_lines
+  loop: "{{ fisher_packages }}"

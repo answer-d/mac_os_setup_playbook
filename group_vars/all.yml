@@ -29,3 +29,9 @@ homebrew_cask_packages:
   - { name: pycharm-ce }
   - { name: cheatsheet }
   - { name: visual-studio-code }
+
+fisher_packages:
+  - oh-my-fish/theme-bobthefish
+  - oh-my-fish/plugin-peco
+  - 0rax/fish-bd
+  - jethrokuan/z
