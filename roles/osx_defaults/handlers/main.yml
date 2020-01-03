@@ -1,0 +1,8 @@
+---
+- name: Finder再起動
+  command: /usr/bin/killall Finder
+  listen: restart_finder
+
+- name: Dock再起動
+  command: /usr/bin/killall Dock
+  listen: restart_dock

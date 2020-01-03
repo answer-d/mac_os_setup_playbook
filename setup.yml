@@ -1,0 +1,47 @@
+---
+- name: setup mac os
+  hosts: all
+  gather_facts: false
+
+  pre_tasks:
+    - name: HomeBrewのtapリポジトリ追加
+      homebrew_tap:
+        tap: "{{ item }}"
+        state: present
+      loop:
+        - homebrew/cask
+      tags:
+        - package
+    - name: HomeBrewのアップデート
+      homebrew:
+        update_homebrew: true
+      tags:
+        - package
+    - name: HomeBrewパッケージのアップグレード
+      homebrew:
+        upgrade_all: true
+      tags:
+        - package
+
+  tasks:
+    - name: パッケージインストール
+      import_role:
+        name: homebrew
+      tags:
+        - package
+    
+    - name: OS設定
+      import_role:
+        name: osx_defaults
+      tags:
+        - osx
+
+    # pyenvでpythonインストール
+
+    # fish環境構築
+
+    # vscode設定(settings.jsonとか拡張機能とか)
+
+    # iterm2設定
+
+    # Powerline環境構築

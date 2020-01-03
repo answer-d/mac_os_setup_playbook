@@ -1,0 +1,45 @@
+---
+- name: Finderで隠しファイルを表示
+  osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllFiles
+    type: bool
+    value: true
+    state: present
+  notify: restart_finder
+
+- name: Finderで拡張子を表示
+  osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllExtensions
+    type: bool
+    value: true
+  notify: restart_finder
+
+- name: FinderでPathBarを表示
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowPathbar
+    type: bool
+    value: true
+  notify: restart_finder
+
+- name: Finderでステータスバーを表示
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowStatusBar
+    type: bool
+    value: true
+  notify: restart_finder
+
+- name: Dockを自動的に隠す
+  osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: int
+    value: 1
+    state: present
+  notify: restart_dock
+
+# TODO: トラックパッド設定
+
