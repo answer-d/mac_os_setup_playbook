@@ -57,3 +57,13 @@
   - name: Powerlineフォントをインストール
     shell: /tmp/powerline_fonts/install.sh
   when: result.matched == 0
+
+- name: Docker用のコマンド保管ファイルを配置
+  get_url:
+    url: https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/fish/docker.fish
+    dest: ~/.config/fish/completions/docker.fish
+
+- name: docker-compose用のコマンド保管ファイルを配置
+  get_url:
+    url: https://raw.githubusercontent.com/docker/compose/master/contrib/completion/fish/docker-compose.fish
+    dest: ~/.config/fish/completions/docker-compose.fish
