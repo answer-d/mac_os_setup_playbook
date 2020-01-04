@@ -171,6 +171,16 @@
     - restart_dock
     - output_setting
 
+- name: Dockのアイコンサイズをマウスオーバーで拡大する
+  osx_defaults:
+    domain: com.apple.dock
+    key: magnification
+    type: bool
+    value: true
+    state: present
+  notify:
+    - restart_dock
+    - output_setting
 - name: Dockのアイコンサイズ(拡大時)を設定
   osx_defaults:
     domain: com.apple.dock
