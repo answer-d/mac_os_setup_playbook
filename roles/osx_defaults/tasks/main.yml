@@ -316,6 +316,15 @@
   notify:
     - output_setting
 
+- name: トラックパッド設定：軌跡の速さをまんなかあたりに
+  osx_defaults:
+    key: com.apple.trackpad.scaling
+    type: float
+    value: 1
+    state: present
+  notify:
+    - output_setting
+
 # キーボード
 # InitialKeyRepeat
 - name: キーボード設定：キーのリピート
