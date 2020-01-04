@@ -1,36 +1,36 @@
 ---
 homebrew_packages:
-  - { name: autoconf }
-  - { name: gifsicle }
-  - { name: git }
-  - { name: go }
-  - { name: httpie }
-  - { name: ssh-copy-id }
-  - { name: cowsay }
-  - { name: readline }
-  - { name: openssl }
-  - { name: pv }
-  - { name: wget }
-  - { name: sl }
-  - { name: fish }
-  - { name: jq }
-  - { name: pyenv }
+  - {name: autoconf}
+  - {name: gifsicle}
+  - {name: git}
+  - {name: go}
+  - {name: httpie}
+  - {name: ssh-copy-id}
+  - {name: cowsay}
+  - {name: readline}
+  - {name: openssl}
+  - {name: pv}
+  - {name: wget}
+  - {name: sl}
+  - {name: fish}
+  - {name: jq}
+  - {name: pyenv}
 
 homebrew_cask_packages:
-  - { name: docker }
-  - { name: google-chrome }
-  - { name: licecap }
-  - { name: macvim }
-  - { name: slack }
-  - { name: transmit, state: absent }
-  - { name: vagrant }
-  - { name: discord }
-  - { name: iterm2 }
-  - { name: pycharm-ce }
-  - { name: cheatsheet }
-  - { name: visual-studio-code }
-  - { name: google-drive-file-stream }
-  - { name: google-japanese-ime }
+  - {name: docker}
+  - {name: google-chrome}
+  - {name: licecap}
+  - {name: macvim}
+  - {name: slack}
+  - {name: transmit, state: absent}
+  - {name: vagrant}
+  - {name: discord}
+  - {name: iterm2}
+  - {name: pycharm-ce}
+  - {name: cheatsheet}
+  - {name: visual-studio-code}
+  - {name: google-drive-file-stream}
+  - {name: google-japanese-ime}
 
 fisher_packages:
   - oh-my-fish/theme-bobthefish
