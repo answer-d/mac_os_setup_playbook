@@ -24,6 +24,7 @@ homebrew_cask_packages:
   - {name: macvim}
   - {name: slack}
   - {name: transmit, state: absent}
+  - {name: virtualbox}
   - {name: vagrant}
   - {name: discord}
   - {name: iterm2}
