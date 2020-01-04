@@ -39,14 +39,14 @@ fisher_packages:
   - jethrokuan/z
 
 vscode_extensions:
-  - ms-ceintl.vscode-language-pack-ja
+  - MS-CEINTL.vscode-language-pack-ja
   - vscode-icons-team.vscode-icons
   - ms-python.python
   - redhat.vscode-yaml
   - vscoss.vscode-ansible
   - wraith13.background-phi-colors
   - wraith13.clairvoyant
-  - weaith13.zoombar-vscode
+  - wraith13.zoombar-vscode
   - oderwat.indent-rainbow
   - mechatroner.rainbow-csv
 

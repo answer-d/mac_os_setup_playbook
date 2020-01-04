@@ -8,7 +8,7 @@
 - name: 拡張機能のインストール
   command: "code --install-extension {{ item }}"
   loop: "{{ vscode_extensions }}"
-  when: not item in result.stdout
+  when: not item in result.stdout_lines
 
 - name: settings.jsonをコピー
   copy:
