@@ -54,3 +54,11 @@
 - <https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/Themes.md>
 - <https://qiita.com/wadaaaan/items/723a9a40925d4a97808a>
 - <https://qiita.com/park-jh/items/557a9d5b470947aef2f5>
+
+### MacOSの設定をコマンドでやるときにどうしたら良いかやつ
+
+- まぁまぁ情報無くて困る…
+
+- <https://github.com/geerlingguy/dotfiles/blob/master/.osx>
+- <http://baqamore.hatenablog.com/entry/2013/08/01/222130>
+- <https://github.com/ryuichi1208/dotfiles/blob/master/mac/macos/.macos>

@@ -6,3 +6,14 @@
 - name: Dock再起動
   command: /usr/bin/killall Dock
   listen: restart_dock
+
+- name: OSの設定値一覧を出力
+  shell:
+    cmd: |
+      set target_dir ./osx_defaults_settings/(date +%Y%m%d_%H%M%S)
+      mkdir {$target_dir}
+      /usr/bin/defaults read > {$target_dir}/defaults
+      /usr/bin/defaults read -g > {$target_dir}/global
+      plutil -p ~/Library/Preferences/ByHost/.GlobalPreferences.*.plist > {$target_dir}/currenthost
+    executable: /usr/local/bin/fish
+  listen: output_setting

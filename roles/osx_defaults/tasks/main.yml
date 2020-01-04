@@ -1,4 +1,10 @@
 ---
+- name: 設定値格納用ディレクトリ作成
+  file:
+    path: ./osx_defaults_settings
+    state: directory
+
+# Finder
 - name: Finderで隠しファイルを表示
   osx_defaults:
     domain: com.apple.finder
@@ -6,7 +12,9 @@
     type: bool
     value: true
     state: present
-  notify: restart_finder
+  notify:
+    - restart_finder
+    - output_setting
 
 - name: Finderで拡張子を表示
   osx_defaults:
@@ -14,7 +22,10 @@
     key: AppleShowAllExtensions
     type: bool
     value: true
-  notify: restart_finder
+    state: present
+  notify:
+    - restart_finder
+    - output_setting
 
 - name: FinderでPathBarを表示
   osx_defaults:
@@ -22,7 +33,10 @@
     key: ShowPathbar
     type: bool
     value: true
-  notify: restart_finder
+    state: present
+  notify:
+    - restart_finder
+    - output_setting
 
 - name: Finderでステータスバーを表示
   osx_defaults:
@@ -30,8 +44,111 @@
     key: ShowStatusBar
     type: bool
     value: true
-  notify: restart_finder
+    state: present
+  notify:
+    - restart_finder
+    - output_setting
 
+- name: Finderでパスバーを表示
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowPathbar
+    type: bool
+    value: true
+    state: present
+  notify:
+    - restart_finder
+    - output_setting
+
+- name: Finder：デスクトップに表示する項目 - 外部ディスク オン
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowExternalHardDrivesOnDesktop
+    type: bool
+    value: true
+    state: present
+  notify:
+    - restart_finder
+    - output_setting
+
+- name: Finder：デスクトップに表示する項目 - ハードディスク オン
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowHardDrivesOnDesktop
+    type: bool
+    value: true
+    state: present
+  notify:
+    - restart_finder
+    - output_setting
+
+- name: Finder：デスクトップに表示する項目 - 接続中のサーバ オン
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowMountedServersOnDesktop
+    type: bool
+    value: true
+    state: present
+  notify:
+    - restart_finder
+    - output_setting
+
+- name: Finder：デスクトップに表示する項目 - リムーバブルメディア オン
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowRemovableMediaOnDesktop
+    type: bool
+    value: true
+    state: present
+  notify:
+    - restart_finder
+    - output_setting
+
+- name: Finder：プレビューペイン オフ
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowPreviewPane
+    type: bool
+    value: false
+    state: present
+  notify:
+    - restart_finder
+    - output_setting
+
+- name: Finder：拡張子変更時の警告を抑制
+  osx_defaults:
+    domain: com.apple.finder
+    key: FXEnableExtensionChangeWarning
+    type: bool
+    value: false
+    state: present
+  notify:
+    - restart_finder
+    - output_setting
+
+- name: Finder：ゴミ箱を空にする前の警告の無効化
+  osx_defaults:
+    domain: com.apple.finder
+    key: WarnOnEmptyTrash
+    type: bool
+    value: false
+    state: present
+  notify:
+    - restart_finder
+    - output_setting
+
+- name: Finder：ネットワークドライブでは.DS_Storeファイルを作らない
+  osx_defaults:
+    domain: com.apple.desktopservices
+    key: DSDontWriteNetworkStores
+    type: bool
+    value: true
+    state: present
+  notify:
+    - restart_finder
+    - output_setting
+
+# Dock
 - name: Dockを自動的に隠す
   osx_defaults:
     domain: com.apple.dock
@@ -39,7 +156,171 @@
     type: int
     value: 1
     state: present
-  notify: restart_dock
+  notify:
+    - restart_dock
+    - output_setting
 
-# TODO: トラックパッド設定
+- name: Dockのアイコンサイズを設定
+  osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    type: float
+    value: 55
+    state: present
+  notify:
+    - restart_dock
+    - output_setting
 
+- name: Dockのアイコンサイズ(拡大時)を設定
+  osx_defaults:
+    domain: com.apple.dock
+    key: largesize
+    type: float
+    value: 100
+    state: present
+  notify:
+    - restart_dock
+    - output_setting
+
+- name: 最近使ったアイコンをDockに表示しない
+  osx_defaults:
+    domain: com.apple.dock
+    key: show-recents
+    type: bool
+    value: false
+    state: present
+  notify:
+    - restart_dock
+    - output_setting
+
+# グローバル設定(謎)
+- name: 「保存」ダイアログのデフォルトを詳細設定にする
+  osx_defaults:
+    key: NSNavPanelExpandedStateForSaveMode
+    type: bool
+    value: true
+    state: present
+  notify:
+    - restart_finder
+    - output_setting
+
+- name: 「印刷」ダイアログのデフォルトを詳細設定にする
+  osx_defaults:
+    key: PMPrintingExpandedStateForPrint
+    type: bool
+    value: true
+    state: present
+  notify:
+    - restart_finder
+    - output_setting
+
+# トラックパッド
+- name: トラックパッド設定：右下隅クリックを右クリックに設定
+  osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: TrackpadCornerSecondaryClick
+    type: int
+    value: 2
+    state: present
+  notify:
+    - output_setting
+- name: トラックパッド設定：右クリックを有効化
+  osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: TrackpadRightClick
+    type: bool
+    value: false
+    state: present
+  notify:
+    - output_setting
+- name: トラックパッド設定：右下隅クリックを右クリックに設定
+  osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: TrackpadCornerSecondaryClick
+    type: int
+    value: 2
+    state: present
+  notify:
+    - output_setting
+- name: トラックパッド設定：右クリックを有効化
+  osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: TrackpadRightClick
+    type: bool
+    value: false
+    state: present
+  notify:
+    - output_setting
+- name: トラックパッド設定：右下隅クリックを右クリックに設定
+  osx_defaults:
+    host: currentHost
+    key: com.apple.trackpad.trackpadCornerClickBehavior
+    type: int
+    value: 1
+    state: present
+  notify:
+    - output_setting
+- name: トラックパッド設定：右クリックを有効化
+  osx_defaults:
+    host: currentHost
+    key: com.apple.trackpad.enableSecondaryClick
+    type: bool
+    value: false
+    state: present
+  notify:
+    - output_setting
+
+- name: トラックパッド設定：タップでクリックON
+  osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: Clicking
+    type: bool
+    value: true
+    state: present
+  notify:
+    - output_setting
+- name: トラックパッド設定：タップでクリックON
+  osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: Clicking
+    type: bool
+    value: true
+    state: present
+  notify:
+    - output_setting
+- name: トラックパッド設定：タップでクリックON
+  osx_defaults:
+    host: currentHost
+    key: com.apple.mouse.tapBehavior
+    type: int
+    value: 1
+    state: present
+  notify:
+    - output_setting
+- name: トラックパッド設定：タップでクリックON
+  osx_defaults:
+    key: com.apple.mouse.tapBehavior
+    type: int
+    value: 1
+    state: present
+  notify:
+    - output_setting
+
+# キーボード
+# InitialKeyRepeat
+- name: キーボード設定：キーのリピート
+  osx_defaults:
+    key: InitialKeyRepeat
+    type: int
+    value: 20
+    state: present
+  notify:
+    - output_setting
+- name: キーボード設定：キーのリピート
+  osx_defaults:
+    key: KeyRepeat
+    type: int
+    value: 1
+    state: present
+  notify:
+    - output_setting
