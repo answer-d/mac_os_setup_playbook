@@ -53,7 +53,14 @@
       tags:
         - pyenv
 
-    # vscode設定(settings.jsonとか拡張機能とか)
+    - name: vscode設定
+      import_role:
+        name: vscode
+      tags:
+        - vscode
 
-    # iterm2設定
-
+    - name: gitconfig
+      import_role:
+        name: gitconfig
+      tags:
+        - gitconfig

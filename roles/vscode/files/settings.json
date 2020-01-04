@@ -1,0 +1,14 @@
+{
+    "terminal.integrated.fontFamily": "Meslo LG M DZ for Powerline",
+    "editor.fontFamily": "Meslo LG M DZ for Powerline",
+    "workbench.iconTheme": "vscode-icons",
+    "vsicons.dontShowNewVersionMessage": true,
+    "files.associations": {
+        "**/roles/**/*.yml": "ansible",
+        "**/*playbook*/**/*.yml": "ansible",
+        "**/*ansible*/**/*.yml": "ansible",
+    },
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.renderWhitespace": "boundary",
+}

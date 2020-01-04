@@ -1,0 +1,16 @@
+---
+- name: インストール済みの拡張機能を取得
+  command: code --list-extensions
+  register: result
+  changed_when: false
+  check_mode: false
+
+- name: 拡張機能のインストール
+  command: "code --install-extension {{ item }}"
+  loop: "{{ vscode_extensions }}"
+  when: not item in result.stdout
+
+- name: settings.jsonをコピー
+  copy:
+    src: settings.json
+    dest: ~/Library/Application Support/Code/User/settings.json

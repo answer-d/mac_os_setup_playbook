@@ -30,9 +30,29 @@ homebrew_cask_packages:
   - { name: cheatsheet }
   - { name: visual-studio-code }
   - { name: google-drive-file-stream }
+  - { name: google-japanese-ime }
 
 fisher_packages:
   - oh-my-fish/theme-bobthefish
   - oh-my-fish/plugin-peco
   - 0rax/fish-bd
   - jethrokuan/z
+
+vscode_extensions:
+  - ms-ceintl.vscode-language-pack-ja
+  - vscode-icons-team.vscode-icons
+  - ms-python.python
+  - redhat.vscode-yaml
+  - vscoss.vscode-ansible
+  - wraith13.background-phi-colors
+  - wraith13.clairvoyant
+  - weaith13.zoombar-vscode
+  - oderwat.indent-rainbow
+  - mechatroner.rainbow-csv
+
+git_config:
+  system:
+    credential.helper: osxkeychain
+  global:
+    user.name: あんでぃー
+    user.email: bboy.answer.d@gmail.com

@@ -1,0 +1,14 @@
+---
+- name: systemのgitconfigを設定
+  git_config:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+    scope: system
+  loop: "{{ git_config.system|dict2items }}"
+
+- name: globalのgitconfigを設定
+  git_config:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+    scope: global
+  loop: "{{ git_config.global|dict2items }}"
