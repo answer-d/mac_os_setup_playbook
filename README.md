@@ -31,6 +31,12 @@
 
 ## Memo
 
+- caskでパッケージインストールときにパスワード入力を求められることがある(直したい)
+- OSX環境設定調べるのむずすぎて手動で設定しないといけないとこもありあり
+- googleimeは手動設定
+
+## Refs
+
 ### 全体的に参考にしまくったやつ
 
 - <https://github.com/patorash/ansible-mac-provisioning>
