@@ -33,6 +33,7 @@ homebrew_cask_packages:
   - {name: visual-studio-code}
   - {name: google-drive-file-stream}
   - {name: google-japanese-ime}
+  - {name: kindle}
 
 fisher_packages:
   - oh-my-fish/theme-bobthefish
