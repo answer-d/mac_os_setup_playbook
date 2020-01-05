@@ -7,6 +7,10 @@
   command: /usr/bin/killall Dock
   listen: restart_dock
 
+- name: System UI Server再起動(メニューバー)
+  command: /usr/bin/killall SystemUIServer
+  listen: restart_system_ui
+
 - name: OSの設定値一覧を出力
   shell:
     cmd: |
