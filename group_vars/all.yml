@@ -52,6 +52,8 @@ vscode_extensions:
   - wraith13.zoombar-vscode
   - oderwat.indent-rainbow
   - mechatroner.rainbow-csv
+  - ms-azuretools.vscode-docker
+  - DavidAnson.vscode-markdownlint
 
 git_config:
   system:
