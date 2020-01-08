@@ -18,6 +18,5 @@
     dest: ~/.config/fish/config.fish
     content: |
       # pyenv
-      set PATH $HOME/.pyenv/shims $PATH
       eval (pyenv init - | source)
     create: true

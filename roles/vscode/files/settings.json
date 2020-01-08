@@ -3,6 +3,8 @@
     "editor.fontFamily": "Meslo LG M DZ for Powerline",
     "workbench.iconTheme": "vscode-icons",
     "vsicons.dontShowNewVersionMessage": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
     "files.associations": {
         "**/roles/**/*.yml": "ansible",
         "**/*playbook*/**/*.yml": "ansible",
@@ -15,3 +17,4 @@
         "!vault"
     ],
 }
+
