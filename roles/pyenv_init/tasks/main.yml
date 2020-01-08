@@ -16,7 +16,21 @@
 - name: pyenvにパスを通す(fish)
   blockinfile:
     dest: ~/.config/fish/config.fish
-    content: |
-      # pyenv
-      eval (pyenv init - | source)
+    marker: "# {mark} ANSIBLE MANAGED BLOCK pyenv init"
+    content: eval (pyenv init - | source)
     create: true
+
+# https://qiita.com/komo/items/450180282766ffb250ba
+- name: homebrewとpyenvの干渉問題を解決するためのエイリアスを追加
+  blockinfile:
+    dest: ~/.config/fish/config.fish
+    marker: "# {mark} ANSIBLE MANAGED BLOCK brew alias"
+    content: |
+      function brew
+          set -xl PATH $PATH # Protect global PATH by local PATH
+          if type -q pyenv; and contains (pyenv root)/shims $PATH
+              set -e PATH[(contains -i (pyenv root)/shims $PATH)]
+          end
+
+          command brew $argv
+      end

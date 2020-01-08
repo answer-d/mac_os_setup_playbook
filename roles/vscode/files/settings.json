@@ -1,20 +1,36 @@
 {
+    // Powerlineフォントを使う
     "terminal.integrated.fontFamily": "Meslo LG M DZ for Powerline",
     "editor.fontFamily": "Meslo LG M DZ for Powerline",
+
+    // vscode icons
     "workbench.iconTheme": "vscode-icons",
     "vsicons.dontShowNewVersionMessage": true,
+
+    // ファイル末尾は空行1行で終わる
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
+
+    // タブサイズ2、タブ文字でなくホワイトスペース
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+
+    // ホワイトスペースを可視化
+    "editor.renderWhitespace": "boundary",
+    
+    // trueだと環境変数を継承してしまって不便だったので…(よくわからん)
+    "terminal.integrated.inheritEnv": false,
+    
+    // yamlバリデーションにカスタムタグ追加
+    "yaml.customTags": [
+        // Ansible
+        "!vault"
+    ],
+
+    // Ansible拡張をオンにするファイル達を設定
     "files.associations": {
         "**/roles/**/*.yml": "ansible",
         "**/*playbook*/**/*.yml": "ansible",
         "**/*ansible*/**/*.yml": "ansible",
     },
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true,
-    "editor.renderWhitespace": "boundary",
-    "yaml.customTags": [
-        "!vault"
-    ],
 }
-
