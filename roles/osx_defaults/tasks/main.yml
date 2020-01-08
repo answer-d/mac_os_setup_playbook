@@ -345,7 +345,7 @@
     - output_setting
 
 # 日付と時刻
-- name: メニューバーに日付、曜日、24時間、秒数を表示
+- name: 日付と時刻設定：メニューバーに日付、曜日、24時間、秒数を表示
   osx_defaults:
     domain: com.apple.menuextra.clock
     key: DateFormat
@@ -359,7 +359,7 @@
   changed_when: false
 
 # 省エネルギー
-- name: 割合 (%) を表示
+- name: 省エネルギー設定：割合 (%) を表示
   osx_defaults:
     domain: com.apple.menuextra.battery
     key: ShowPercent
