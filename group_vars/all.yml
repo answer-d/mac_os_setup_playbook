@@ -15,7 +15,7 @@ homebrew_packages:
   - {name: fish}
   - {name: jq}
   - {name: pyenv}
-  - {name: docker-compose}
+  - {name: docker-compose, state:absent}
 
 homebrew_cask_packages:
   - {name: docker}
@@ -34,6 +34,7 @@ homebrew_cask_packages:
   - {name: google-drive-file-stream}
   - {name: google-japanese-ime}
   - {name: kindle}
+  - {name: steam}
 
 fisher_packages:
   - oh-my-fish/theme-bobthefish
