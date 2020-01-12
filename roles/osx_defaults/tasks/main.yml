@@ -326,7 +326,6 @@
     - output_setting
 
 # キーボード
-# InitialKeyRepeat
 - name: キーボード設定：キーのリピート
   osx_defaults:
     key: InitialKeyRepeat
@@ -343,6 +342,43 @@
     state: present
   notify:
     - output_setting
+
+# TODO: 以下のPRによりdict型がosx_defaultsモジュールでサポートされるようになったら実装予定
+# → https://github.com/ansible/ansible/pull/24808
+# - name: Spotlight呼び出しショートカット変更 - 「次の入力ソースを選択」とショートカットが被るので無効化
+#   osx_defaults:
+#     domain: com.apple.symbolichotkeys
+#     key: AppleSymbolicHotKeys
+#     type: dict
+#     value: |
+#       61 =     {
+#           enabled = 0;
+#       };
+#     state: present
+#   notify:
+#     - output_setting
+#     - restart_spotlight
+# - name: Spotlight呼び出しショートカット変更 - Spotlight呼び出しのショートカットキーを「option + command + space」に変更
+#   osx_defaults:
+#     domain: com.apple.symbolichotkeys
+#     key: AppleSymbolicHotKeys
+#     type: dict
+#     value: |
+#       64 =     {
+#           enabled = 1;
+#           value =         {
+#               parameters =             (
+#                   32,
+#                   49,
+#                   1572864
+#               );
+#               type = standard;
+#           };
+#       };
+#     state: present
+#   notify:
+#     - output_setting
+#     - restart_spotlight
 
 # 日付と時刻
 - name: 日付と時刻設定：メニューバーに日付、曜日、24時間、秒数を表示

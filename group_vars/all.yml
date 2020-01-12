@@ -57,6 +57,7 @@ vscode_extensions:
   - mechatroner.rainbow-csv
   - ms-azuretools.vscode-docker
   - DavidAnson.vscode-markdownlint
+  - wholroyd.jinja
 
 git_config:
   system:
