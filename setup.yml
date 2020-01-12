@@ -64,3 +64,9 @@
         name: gitconfig
       tags:
         - gitconfig
+
+    - name: vimrc
+      import_role:
+        name: vimrc
+      tags:
+        - vimrc

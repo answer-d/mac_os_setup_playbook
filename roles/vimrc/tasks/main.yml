@@ -1,0 +1,11 @@
+---
+# https://qiita.com/morikooooo/items/9fd41bcd8d1ce9170301
+- name: .vimrcのコピー
+  copy:
+    src: .vimrc
+    dest: ~/
+
+- name: .gvimrcのコピー
+  copy:
+    src: .gvimrc
+    dest: ~/
