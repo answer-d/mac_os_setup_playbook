@@ -16,6 +16,8 @@ homebrew_packages:
   - {name: jq}
   - {name: pyenv}
   - {name: docker-compose, state:absent}
+  - {name: watch}
+  - {name: peco}
 
 homebrew_cask_packages:
   - {name: docker}
