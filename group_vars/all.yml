@@ -19,6 +19,8 @@ homebrew_packages:
   - {name: watch}
   - {name: peco}
   - {name: gibo}
+  - {name: tree}
+  - {name: pstree}
 
 homebrew_cask_packages:
   - {name: docker}
