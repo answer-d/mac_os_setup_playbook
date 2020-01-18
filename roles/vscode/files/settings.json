@@ -20,6 +20,9 @@
     
     // trueだと環境変数を継承してしまって不便だったので…(よくわからん)
     "terminal.integrated.inheritEnv": false,
+
+    // Ctrl+マウスホイールでズーム設定
+    "editor.mouseWheelZoom": true,
     
     // yamlバリデーションにカスタムタグ追加
     "yaml.customTags": [
