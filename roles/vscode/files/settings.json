@@ -23,7 +23,10 @@
 
     // Ctrl+マウスホイールでズーム設定
     "editor.mouseWheelZoom": true,
-    
+
+    // ターミナルのバッファ行数
+    "terminal.integrated.scrollback": 10000,
+
     // yamlバリデーションにカスタムタグ追加
     "yaml.customTags": [
         // Ansible
