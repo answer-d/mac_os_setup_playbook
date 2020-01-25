@@ -62,6 +62,9 @@ vscode_extensions:
   - DavidAnson.vscode-markdownlint
   - wholroyd.jinja
   - eamodio.gitlens
+  - 74th.monokai-charcoal-high-contrast
+  - johnpapa.vscode-peacock
+  - dracula-theme.theme-dracula
 
 git_config:
   system:

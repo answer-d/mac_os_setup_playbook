@@ -1,4 +1,7 @@
 {
+    // テーマ
+    "workbench.colorTheme": "Dracula",
+
     // Powerlineフォントを使う
     "terminal.integrated.fontFamily": "Meslo LG M DZ for Powerline",
     "editor.fontFamily": "Meslo LG M DZ for Powerline",
