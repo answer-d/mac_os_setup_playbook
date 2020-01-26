@@ -72,3 +72,199 @@ git_config:
   global:
     user.name: あんでぃー
     user.email: bboy.answer.d@gmail.com
+
+defaults:
+  finder:
+    - name: 隠しファイルを表示
+      domain: com.apple.finder
+      key: AppleShowAllFiles
+      type: bool
+      value: true
+
+    - name: 拡張子を表示
+      domain: com.apple.finder
+      key: AppleShowAllExtensions
+      type: bool
+      value: true
+
+    - name: ステータスバーを表示
+      domain: com.apple.finder
+      key: ShowStatusBar
+      type: bool
+      value: true
+
+    - name: パスバーを表示
+      domain: com.apple.finder
+      key: ShowPathbar
+      type: bool
+      value: true
+
+    - name: デスクトップに表示する項目 - 外部ディスク オン
+      domain: com.apple.finder
+      key: ShowExternalHardDrivesOnDesktop
+      type: bool
+      value: true
+
+    - name: デスクトップに表示する項目 - ハードディスク オン
+      domain: com.apple.finder
+      key: ShowHardDrivesOnDesktop
+      type: bool
+      value: true
+
+    - name: デスクトップに表示する項目 - 接続中のサーバ オン
+      domain: com.apple.finder
+      key: ShowMountedServersOnDesktop
+      type: bool
+      value: true
+
+    - name: デスクトップに表示する項目 - リムーバブルメディア オン
+      domain: com.apple.finder
+      key: ShowRemovableMediaOnDesktop
+      type: bool
+      value: true
+
+    - name: プレビューペイン オフ
+      domain: com.apple.finder
+      key: ShowPreviewPane
+      type: bool
+      value: false
+
+    - name: 拡張子変更時の警告を抑制
+      domain: com.apple.finder
+      key: FXEnableExtensionChangeWarning
+      type: bool
+      value: false
+
+    - name: ゴミ箱を空にする前の警告の無効化
+      domain: com.apple.finder
+      key: WarnOnEmptyTrash
+      type: bool
+      value: false
+
+    - name: ネットワークドライブでは.DS_Storeファイルを作らない
+      domain: com.apple.desktopservices
+      key: DSDontWriteNetworkStores
+      type: bool
+      value: true
+
+    - name: 「保存」ダイアログのデフォルトを詳細設定にする
+      key: NSNavPanelExpandedStateForSaveMode
+      type: bool
+      value: true
+
+    - name: 「印刷」ダイアログのデフォルトを詳細設定にする
+      key: PMPrintingExpandedStateForPrint
+      type: bool
+      value: true
+
+  dock:
+    - name: 自動的に隠す
+      domain: com.apple.dock
+      key: autohide
+      type: int
+      value: 1
+
+    - name: アイコンサイズを設定
+      domain: com.apple.dock
+      key: tilesize
+      type: float
+      value: 55
+
+    - name: アイコンサイズをマウスオーバーで拡大する
+      domain: com.apple.dock
+      key: magnification
+      type: bool
+      value: true
+
+    - name: アイコンサイズ(拡大時)を設定
+      domain: com.apple.dock
+      key: largesize
+      type: float
+      value: 100
+
+    - name: 最近使ったアイコンを表示しない
+      domain: com.apple.dock
+      key: show-recents
+      type: bool
+      value: false
+
+  trackpad:
+    - name: 右下隅クリックを右クリックに設定
+      domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+      key: TrackpadCornerSecondaryClick
+      type: int
+      value: 2
+    - name: 右下隅クリックを右クリックに設定
+      domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+      key: TrackpadRightClick
+      type: bool
+      value: false
+    - name: 右下隅クリックを右クリックに設定
+      domain: com.apple.AppleMultitouchTrackpad
+      key: TrackpadCornerSecondaryClick
+      type: int
+      value: 2
+    - name: 右下隅クリックを右クリックに設定
+      domain: com.apple.AppleMultitouchTrackpad
+      key: TrackpadRightClick
+      type: bool
+      value: false
+    - name: 右下隅クリックを右クリックに設定
+      host: currentHost
+      key: com.apple.trackpad.trackpadCornerClickBehavior
+      type: int
+      value: 1
+    - name: 右下隅クリックを右クリックに設定
+      host: currentHost
+      key: com.apple.trackpad.enableSecondaryClick
+      type: bool
+      value: false
+
+    - name: タップでクリックON
+      domain: com.apple.AppleMultitouchTrackpad
+      key: Clicking
+      type: bool
+      value: true
+    - name: タップでクリックON
+      domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+      key: Clicking
+      type: bool
+      value: true
+    - name: タップでクリックON
+      host: currentHost
+      key: com.apple.mouse.tapBehavior
+      type: int
+      value: 1
+    - name: タップでクリックON
+      key: com.apple.mouse.tapBehavior
+      type: int
+      value: 1
+
+    - name: 軌跡の速さをまんなかあたりに
+      key: com.apple.trackpad.scaling
+      type: float
+      value: 1
+
+  keyboard:
+    - name: キーのリピート
+      key: InitialKeyRepeat
+      type: int
+      value: 20
+    - name: キーのリピート
+      key: KeyRepeat
+      type: int
+      value: 1
+
+  menuextra:
+    # unicodeの扱いがうまくいかないのか毎回changedステータスになってしまう…
+    - name: 日付と時刻設定：メニューバーに日付、曜日、24時間、秒数を表示
+      domain: com.apple.menuextra.clock
+      key: DateFormat
+      type: string
+      value: M月d日(EEE)  H:mm:ss
+
+    - name: 省エネルギー設定：割合 (%) を表示
+      domain: com.apple.menuextra.battery
+      key: ShowPercent
+      type: string
+      value: True
