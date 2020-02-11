@@ -86,6 +86,10 @@ defaults:
       key: AppleShowAllExtensions
       type: bool
       value: true
+    - name: 拡張子を表示
+      key: AppleShowAllExtensions
+      type: bool
+      value: true
 
     - name: ステータスバーを表示
       domain: com.apple.finder
