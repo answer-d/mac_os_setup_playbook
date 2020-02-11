@@ -14,20 +14,32 @@
     - name: HomeBrewのアップデート
       homebrew:
         update_homebrew: true
-      tags:
-        - package
-    - name: HomeBrewパッケージのアップグレード
-      homebrew:
         upgrade_all: true
+      # パッケージはいつ更新されるか分からないのでこのタスクは常にsuccessステータス
+      changed_when: false
       tags:
         - package
 
   tasks:
+    - name: ダウンロードしたアプリケーションの実況許可をチェック
+      command: spctl --status
+      register: spctl_results
+      changed_when: false
+      # 上記のコマンドはdisableの場合1を返すため
+      failed_when: false
+      check_mode: false
+
+    - name: ダウンロードしたアプリケーションの実行許可をすべてのアプリケーションに与える
+      command: spctl --master-disable
+      become: true
+      when: spctl_results.stdout != "assessments disabled"
+
     - name: パッケージインストール
       import_role:
         name: homebrew
       tags:
         - package
+        - package_install
 
     - name: OS設定
       import_role:
