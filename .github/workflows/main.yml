@@ -3,6 +3,12 @@ name: CI
 on: [push]
 
 jobs:
+  ut:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test parallels
+        run: sleep 20
   it:
     runs-on: macos-latest
     env:
