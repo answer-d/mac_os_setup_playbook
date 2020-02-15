@@ -25,6 +25,11 @@
   get_url:
     url: https://git.io/fisher
     dest: ~/.config/fish/functions/fisher.fish
+  # OpenSSLの問題によりTLS認証エラーが発生してタスクに失敗するのでワークアラウンドとして以下の変数を定義
+  # https://github.com/ansible/ansible/issues/33417
+  # todo: もっと良い解決方法を見つける
+  vars:
+    ansible_python_interpreter: python3
 
 - name: Fishermanのパッケージインストール状況確認
   shell:
@@ -41,6 +46,12 @@
   when:
     - not item in result.stdout_lines
   loop: "{{ fisher_packages }}"
+
+- name: フォントのインストール先ディレクトリ
+  file:
+    path: ~/Library/Fonts
+    mode: 0700
+    state: directory
 
 - name: Powerlineフォントが既にインストールされているか確認
   find:
@@ -62,10 +73,16 @@
   get_url:
     url: https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/fish/docker.fish
     dest: ~/.config/fish/completions/docker.fish
+  # todo: OpenSSL問題(↑参照)
+  vars:
+    ansible_python_interpreter: python3
   when: not ansible_check_mode
 
 - name: docker-compose用のコマンド保管ファイルを配置
   get_url:
     url: https://raw.githubusercontent.com/docker/compose/master/contrib/completion/fish/docker-compose.fish
     dest: ~/.config/fish/completions/docker-compose.fish
+  # todo: OpenSSL問題(↑参照)
+  vars:
+    ansible_python_interpreter: python3
   when: not ansible_check_mode
