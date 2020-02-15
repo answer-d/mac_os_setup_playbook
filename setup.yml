@@ -21,7 +21,7 @@
         - package
 
   tasks:
-    - name: ダウンロードしたアプリケーションの実況許可をチェック
+    - name: ダウンロードしたアプリケーションの実行許可をチェック
       command: spctl --status
       register: spctl_results
       changed_when: false

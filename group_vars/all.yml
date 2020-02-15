@@ -260,7 +260,7 @@ defaults:
       value: 1
 
   menuextra:
-    # todo: unicodeの扱いがうまくいかないのか毎回changedステータスになってしまう対応
+    # todo: unicodeの扱いがうまくいかないのか毎回changedステータスになってしまう対応でコメントアウト
     # - name: 日付と時刻設定：メニューバーに日付、曜日、24時間、秒数を表示
     #   domain: com.apple.menuextra.clock
     #   key: DateFormat
