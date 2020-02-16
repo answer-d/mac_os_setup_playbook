@@ -13,7 +13,7 @@ jobs:
       - name: yamllint
         run: yamllint .
       - name: ansible-lint
-        run: ansible-lint setup.yml
+        run: ansible-lint
   it:
     runs-on: macos-latest
     env:
