@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install molecule
-        run: pip install -r requirements.txt
+        run: pip3 install -r requirements.txt
       - name: debug - show yamllint version
         run: yamllint --version
       - name: ansible-lint setup.yml
