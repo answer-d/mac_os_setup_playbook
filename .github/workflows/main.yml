@@ -3,6 +3,10 @@ name: CI
 
 on: [push]
 
+env:
+  # このパイプラインで実行しない処理をスキップするための環境識別用変数
+  ORE_NO_MACBOOK_CICD_PIPELINE: true
+
 jobs:
   ut:
     runs-on: macos-latest
@@ -28,8 +32,6 @@ jobs:
     env:
       # ActionsのMacOSイメージはsudoパスワード無しで昇格可能
       ANSIBLE_BECOME_ASK_PASS: 0
-      # このパイプラインで実行しない処理をスキップするための環境識別用変数
-      ORE_NO_MACBOOK_CICD_PIPELINE: true
     steps:
       - uses: actions/checkout@v2
       - name: Install homebrew
