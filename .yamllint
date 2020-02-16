@@ -12,6 +12,10 @@ yaml-files:
 
 rules:
   comments-indentation: disable
+  indentation:
+    spaces: 2
+    indent-sequences: true
+    check-multi-line-strings: false
   line-length:
     max: 140
   truthy: disable

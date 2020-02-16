@@ -1,25 +1,22 @@
 ---
-# This is an example playbook to execute Ansible tests.
-
 - name: Verify
   hosts: all
   tasks:
-  - name: slをwhichする
-    command: /usr/bin/which sl
-    changed_when: false
-    failed_when: false
-    register: result_sl
-  - name: slがインストールされてること
-    assert:
-      that:
-        - result_sl.stdout == "/usr/local/bin/sl"
-
-  - name: cowsayをwhichする
-    command: /usr/bin/which cowsay
-    changed_when: false
-    failed_when: false
-    register: result_cowsay
-  - name: cowsayがインストールされてないこと
-    assert:
-      that:
-        - not result_cowsay.stdout
+    - name: slをwhichする
+      command: /usr/bin/which sl
+      changed_when: false
+      failed_when: false
+      register: result_sl
+    - name: slがインストールされてること
+      assert:
+        that:
+          - result_sl.stdout == "/usr/local/bin/sl"
+    - name: cowsayをwhichする
+      command: /usr/bin/which cowsay
+      changed_when: false
+      failed_when: false
+      register: result_cowsay
+    - name: cowsayがインストールされてないこと
+      assert:
+        that:
+          - not result_cowsay.stdout
