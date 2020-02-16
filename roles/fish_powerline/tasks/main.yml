@@ -32,7 +32,7 @@
     ansible_python_interpreter: python3
 
 - name: Fishermanのパッケージインストール状況確認
-  shell:
+  shell: # noqa 305
     cmd: "fisher ls"
     executable: /usr/local/bin/fish
   changed_when: false
@@ -40,7 +40,7 @@
   register: result
 
 - name: Fishermanでパッケージインストール
-  shell:
+  shell: # noqa 305
     cmd: "fisher add {{ item }}"
     executable: /usr/local/bin/fish
   when:
@@ -61,12 +61,12 @@
 
 - block:
   - name: PowerlineインストールのためにGitリポジトリをクローン
-    git:
+    git: # noqa 401
       repo: https://github.com/powerline/fonts.git
       dest: /tmp/powerline_fonts
       depth: 1
   - name: Powerlineフォントをインストール
-    shell: /tmp/powerline_fonts/install.sh
+    command: /tmp/powerline_fonts/install.sh
   when: result.matched == 0
 
 - name: Docker用のコマンド保管ファイルを配置
