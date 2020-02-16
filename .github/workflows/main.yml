@@ -1,3 +1,4 @@
+---
 name: CI
 
 on: [push]
@@ -11,10 +12,10 @@ jobs:
         run: pip3 install -r requirements.txt
       - name: debug - show yamllint version
         run: yamllint --version
-      - name: ansible-lint setup.yml
+      - name: yamllint
+        run: yamllint .
+      - name: ansible-lint
         run: ansible-lint setup.yml
-      - name: yamllint setup.yml
-        run: yamllint setup.yml
   it:
     runs-on: macos-latest
     env:
@@ -25,18 +26,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install homebrew
-        run: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        run: |
+          /usr/bin/ruby -e "$(curl -fsSL \
+          https://raw.githubusercontent.com/Homebrew/install/master/install)"
       - name: Install Ansible
         run: brew install ansible
       - name: Execute setup Playbook
         run: ansible-playbook setup.yml --diff -v
       - name: Idempotent check
         run: |
-          res=`ansible-playbook setup.yml --diff -v`
-          echo $res
-          echo $res | grep localhost | tail -1 | grep -v -e "changed=[1-9][0-9]*"
+          ansible-playbook setup.yml --diff -v | tee idem.log
+          grep localhost idem.log | tail -1 | grep -v -e "changed=[1-9][0-9]*"
       - name: Dryrun check
         run: ansible-playbook setup.yml -C -v
       # TODO: AnsibleとかTestinfraでインテグレーションテスト
       # - name: Perform integrate test
-      #   run: 
+      #   run:
