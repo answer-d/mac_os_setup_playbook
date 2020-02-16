@@ -2,21 +2,13 @@
 - name: Verify
   hosts: all
   tasks:
-    - name: slをwhichする
+    - name: slがインストールされているか
       command: /usr/bin/which sl
       changed_when: false
-      failed_when: false
       register: result_sl
-    - name: slがインストールされてること
-      assert:
-        that:
-          - result_sl.stdout == "/usr/local/bin/sl"
-    - name: cowsayをwhichする
+      failed_when: not result_sl.stdout
+    - name: cowsayがインストールされていないか
       command: /usr/bin/which cowsay
       changed_when: false
-      failed_when: false
       register: result_cowsay
-    - name: cowsayがインストールされてないこと
-      assert:
-        that:
-          - not result_cowsay.stdout
+      failed_when: result_cowsay.stdout
