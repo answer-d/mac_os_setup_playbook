@@ -1,12 +1,11 @@
 ---
-
 extends: default
 
+# 各ロールはmoleculeでlintするため除外
 ignore: |
   .git/
   .venv/
   roles/
-
 yaml-files:
   - '*.yaml'
   - '*.yml'
