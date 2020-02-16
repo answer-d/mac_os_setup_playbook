@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  role_ut:
+  ut:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
