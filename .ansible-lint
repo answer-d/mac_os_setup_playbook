@@ -1,8 +1,6 @@
 ---
-# 各ロールはmoleculeでlintするため除外
 exclude_paths:
   - .github/
-  - roles/
 
 parseable: true
 quiet: false

@@ -1,1 +1,3 @@
-molecule
+# @20200216 v3使いたいのでソースからインストールして最新版使う
+git+https://github.com/ansible-community/molecule
+docker

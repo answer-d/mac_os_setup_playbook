@@ -14,6 +14,13 @@ jobs:
         run: yamllint -s .
       - name: ansible-lint
         run: ansible-lint
+      - name: molecule
+        run: |
+          base_dir=`pwd`
+          for molecule_dir in `find roles -name molecule -type d`
+          do
+            echo $molecule_dir
+          done
   it:
     runs-on: macos-latest
     env:

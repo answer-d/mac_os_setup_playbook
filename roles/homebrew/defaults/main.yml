@@ -1,0 +1,13 @@
+---
+# brew installしたいパッケージに関するdictのリスト
+#   name: <str>
+#   state: [present|absent] default=present
+homebrew_packages:
+  - {name: sl}
+  - {name: cowsay, state: absent}
+
+# brew cask installしたいパッケージに関するdictのリスト
+#   name: <str>
+#   state: [present|absent] default=present
+homebrew_cask_packages:
+  - {name: cheatsheet}
