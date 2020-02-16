@@ -3,12 +3,18 @@ name: CI
 on: [push]
 
 jobs:
-  ut:
+  role_ut:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - name: test parallels
-        run: sleep 20
+      - name: Install molecule
+        run: pip install -r requirements.txt
+      - name: multiline command check
+        run: |
+          false
+          ls
+      - name: lint setup.yml
+        run: ansible-lint setup.yml
   it:
     runs-on: macos-latest
     env:
