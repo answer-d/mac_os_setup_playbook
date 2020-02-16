@@ -2,6 +2,6 @@
 - name: Converge
   hosts: all
   tasks:
-    - name: "Include role"
+    - name: Include role
       include_role:
-        name: "homebrew"
+        name: homebrew
