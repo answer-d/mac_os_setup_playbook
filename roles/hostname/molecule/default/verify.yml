@@ -1,0 +1,17 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  vars_files:
+    - ../../defaults/main.yml
+  tasks:
+  - name: ホスト名を拾う
+    command: /usr/bin/uname -n
+    changed_when: false
+    failed_when: false
+    register: result_hostname
+  - name: ホスト名が狙ったやつになってるか
+    assert:
+      that:
+        - result_hostname == "{{ hostname }}.local"
