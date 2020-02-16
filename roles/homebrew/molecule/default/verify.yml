@@ -22,4 +22,4 @@
   - name: cowsayがインストールされてないこと
     assert:
       that:
-        - result_cowsay.stdout == ""
+        - not result_cowsay.stdout
