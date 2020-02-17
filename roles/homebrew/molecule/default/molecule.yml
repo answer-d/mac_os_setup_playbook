@@ -16,3 +16,22 @@ provisioner:
   name: ansible
 verifier:
   name: ansible
+
+# converge前後にcheckステップを追加してドライランが動作することをテストする
+scenario:
+  test_sequence:
+    - dependency
+    - lint
+    - cleanup
+    - destroy
+    - syntax
+    - create
+    - prepare
+    - check
+    - converge
+    - idempotence
+    - check
+    - side_effect
+    - verify
+    - cleanup
+    - destroy
