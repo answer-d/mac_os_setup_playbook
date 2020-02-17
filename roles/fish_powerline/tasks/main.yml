@@ -44,20 +44,20 @@
   register: result_fish
 
 - block:
-  - name: Fishermanのパッケージインストール状況確認
-    shell:  # noqa 305
-      cmd: "fisher ls"
-      executable: /usr/local/bin/fish
-    changed_when: false
-    check_mode: false
-    register: result
+    - name: Fishermanのパッケージインストール状況確認
+      shell:  # noqa 305
+        cmd: "fisher ls"
+        executable: /usr/local/bin/fish
+      changed_when: false
+      check_mode: false
+      register: result
 
-  - name: Fishermanでパッケージインストール
-    shell:  # noqa 305
-      cmd: "fisher add {{ item }}"
-      executable: /usr/local/bin/fish
-    when: not item in result.stdout_lines
-    loop: "{{ fisher_packages }}"
+    - name: Fishermanでパッケージインストール
+      shell:  # noqa 305
+        cmd: "fisher add {{ item }}"
+        executable: /usr/local/bin/fish
+      when: not item in result.stdout_lines
+      loop: "{{ fisher_packages }}"
   when: result_fish.stat.exists
 
 - name: フォントのインストール先ディレクトリ
