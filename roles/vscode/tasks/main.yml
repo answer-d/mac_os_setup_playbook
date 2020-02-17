@@ -1,16 +1,25 @@
 ---
-- name: インストール済みの拡張機能を取得
-  command: code --list-extensions
-  register: result
+- name: codeコマンドが使用可能か確認(使用できなければ全体をスキップ)
+  command: which code
   changed_when: false
+  failed_when: false
   check_mode: false
+  register: result_code_cmd_exists
 
-- name: 拡張機能のインストール
-  command: "code --install-extension {{ item }}"
-  loop: "{{ vscode_extensions }}"
-  when: not item in result.stdout_lines
+- block:
+    - name: インストール済みの拡張機能を取得
+      command: code --list-extensions
+      register: result
+      changed_when: false
+      check_mode: false
 
-- name: settings.jsonをコピー
-  copy:
-    src: settings.json
-    dest: ~/Library/Application Support/Code/User/settings.json
+    - name: 拡張機能のインストール
+      command: "code --install-extension {{ item }}"
+      loop: "{{ vscode_extensions }}"
+      when: not item in result.stdout_lines
+
+    - name: settings.jsonをコピー
+      copy:
+        src: settings.json
+        dest: ~/Library/Application Support/Code/User/settings.json
+  when: result_code_cmd_exists.stdout
