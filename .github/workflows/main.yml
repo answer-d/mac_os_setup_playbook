@@ -38,13 +38,15 @@ jobs:
         run: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
       - name: Install Ansible
         run: brew install ansible
+      - name: Dryrun check (before)
+        run: ansible-playbook setup.yml -C -v
       - name: Execute setup Playbook
         run: ansible-playbook setup.yml --diff -v
-      - name: Idempotent check
+      - name: Idempotence check
         run: |
           ansible-playbook setup.yml --diff -v | tee idem.log
           grep localhost idem.log | tail -1 | grep -v -e "changed=[1-9][0-9]*"
-      - name: Dryrun check
+      - name: Dryrun check (after)
         run: ansible-playbook setup.yml -C -v
       # TODO: AnsibleとかTestinfraでインテグレーションテスト
       # - name: Perform integrate test
