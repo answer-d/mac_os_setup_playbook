@@ -57,6 +57,7 @@
     cmd: "fisher add {{ item }}"
     executable: /usr/local/bin/fish
   when:
+    - result_fish.stat.exists
     - not item in result.stdout_lines
   loop: "{{ fisher_packages }}"
 
