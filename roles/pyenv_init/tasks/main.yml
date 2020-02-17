@@ -1,8 +1,9 @@
 ---
 - name: pyenvが使用可能か確認(使用できなければ全体をスキップ)
   command: which pyenv
-  check_mode: false
   changed_when: false
+  failed_when: false
+  check_mode: false
   register: result_pyenv_exists
 
 - block:
