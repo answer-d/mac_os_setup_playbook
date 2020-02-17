@@ -1,36 +1,44 @@
 ---
-- name: 何らかのpythonがインストールされているかチェック(されていたら何もしない)
-  command: pyenv versions
+- name: pyenvが使用可能か確認(使用できなければ全体をスキップ)
+  command: which pyenv
   check_mode: false
   changed_when: false
-  register: result
+  register: result_pyenv_exists
 
 - block:
-    - name: python3.Xの最新をインストール
-      shell: 'pyenv install -l | grep -e "^ *3" | grep -v dev | grep -v rc | tail -1 | xargs -I{} pyenv install {}'
+  - name: 何らかのpythonがインストールされているかチェック(されていたら何もしない)
+    command: pyenv versions
+    check_mode: false
+    changed_when: false
+    register: result
 
-    - name: インストールしたpythonをglobalに設定
-      shell: 'pyenv versions | grep -v system | xargs -I{} pyenv global {}'
-  when: result.stdout_lines|length == 1
+  - block:
+      - name: python3.Xの最新をインストール
+        shell: 'pyenv install -l | grep -e "^ *3" | grep -v dev | grep -v rc | tail -1 | xargs -I{} pyenv install {}'
 
-- name: pyenvにパスを通す(fish)
-  blockinfile:
-    dest: ~/.config/fish/config.fish
-    marker: "# {mark} ANSIBLE MANAGED BLOCK pyenv init"
-    content: eval (pyenv init - | source)
-    create: true
+      - name: インストールしたpythonをglobalに設定
+        shell: 'pyenv versions | grep -v system | xargs -I{} pyenv global {}'
+    when: result.stdout_lines|length == 1
 
-# https://qiita.com/komo/items/450180282766ffb250ba
-- name: homebrewとpyenvの干渉問題を解決するためのエイリアスを追加
-  blockinfile:
-    dest: ~/.config/fish/config.fish
-    marker: "# {mark} ANSIBLE MANAGED BLOCK brew alias"
-    content: |
-      function brew
-          set -xl PATH $PATH # Protect global PATH by local PATH
-          if type -q pyenv; and contains (pyenv root)/shims $PATH
-              set -e PATH[(contains -i (pyenv root)/shims $PATH)]
-          end
+  - name: pyenvにパスを通す(fish)
+    blockinfile:
+      dest: ~/.config/fish/config.fish
+      marker: "# {mark} ANSIBLE MANAGED BLOCK pyenv init"
+      content: eval (pyenv init - | source)
+      create: true
 
-          command brew $argv
-      end
+  # https://qiita.com/komo/items/450180282766ffb250ba
+  - name: homebrewとpyenvの干渉問題を解決するためのエイリアスを追加
+    blockinfile:
+      dest: ~/.config/fish/config.fish
+      marker: "# {mark} ANSIBLE MANAGED BLOCK brew alias"
+      content: |
+        function brew
+            set -xl PATH $PATH # Protect global PATH by local PATH
+            if type -q pyenv; and contains (pyenv root)/shims $PATH
+                set -e PATH[(contains -i (pyenv root)/shims $PATH)]
+            end
+
+            command brew $argv
+        end
+  when: result_pyenv_exists.stdout

@@ -43,23 +43,22 @@
     path: /usr/local/bin/fish
   register: result_fish
 
-- name: Fishermanのパッケージインストール状況確認
-  shell:  # noqa 305
-    cmd: "fisher ls"
-    executable: /usr/local/bin/fish
-  changed_when: false
-  check_mode: false
-  register: result
-  when: result_fish.stat.exists
+- block:
+  - name: Fishermanのパッケージインストール状況確認
+    shell:  # noqa 305
+      cmd: "fisher ls"
+      executable: /usr/local/bin/fish
+    changed_when: false
+    check_mode: false
+    register: result
 
-- name: Fishermanでパッケージインストール
-  shell:  # noqa 305
-    cmd: "fisher add {{ item }}"
-    executable: /usr/local/bin/fish
-  when:
-    - result_fish.stat.exists
-    - not item in result.stdout_lines
-  loop: "{{ fisher_packages }}"
+  - name: Fishermanでパッケージインストール
+    shell:  # noqa 305
+      cmd: "fisher add {{ item }}"
+      executable: /usr/local/bin/fish
+    when: not item in result.stdout_lines
+    loop: "{{ fisher_packages }}"
+  when: result_fish.stat.exists
 
 - name: フォントのインストール先ディレクトリ
   file:
@@ -91,7 +90,6 @@
   # todo: OpenSSL問題(↑参照)
   vars:
     ansible_python_interpreter: python3
-  when: not ansible_check_mode
 
 - name: docker-compose用のコマンド保管ファイルを配置
   get_url:
@@ -101,4 +99,3 @@
   # todo: OpenSSL問題(↑参照)
   vars:
     ansible_python_interpreter: python3
-  when: not ansible_check_mode
