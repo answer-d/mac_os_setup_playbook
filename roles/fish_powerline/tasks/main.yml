@@ -19,17 +19,24 @@
     state: directory
     recurse: true
 
+- name: ディレクトリ存在確認(dry-run用)
+  stat:
+    path: ~/.config/fish/functions/
+  register: result_fish_dir
+
 # Oh My FishよりFisherの方が後発、かつFisherでOMFのプラグインもインストールできるためこっちを選んだ
 # → https://qiita.com/hennin/items/33758226a0de8c963ddf
 - name: Fisher (fishのパッケージマネージャ)をインストール
   get_url:
     url: https://git.io/fisher
     dest: ~/.config/fish/functions/fisher.fish
+    force: true
   # OpenSSLの問題によりTLS認証エラーが発生してタスクに失敗するのでワークアラウンドとして以下の変数を定義
   # https://github.com/ansible/ansible/issues/33417
   # todo: もっと良い解決方法を見つける
   vars:
     ansible_python_interpreter: python3
+  when: result_fish_dir.exists
 
 - name: Fishermanのパッケージインストール状況確認
   shell:  # noqa 305
@@ -73,6 +80,7 @@
   get_url:
     url: https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/fish/docker.fish
     dest: ~/.config/fish/completions/docker.fish
+    force: true
   # todo: OpenSSL問題(↑参照)
   vars:
     ansible_python_interpreter: python3
@@ -82,6 +90,7 @@
   get_url:
     url: https://raw.githubusercontent.com/docker/compose/master/contrib/completion/fish/docker-compose.fish
     dest: ~/.config/fish/completions/docker-compose.fish
+    force: true
   # todo: OpenSSL問題(↑参照)
   vars:
     ansible_python_interpreter: python3
