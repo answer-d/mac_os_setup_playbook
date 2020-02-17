@@ -1,0 +1,11 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: localhostにdelegateする実装をしているので環境チェックしてパイプライン外で動かないようにする
+      assert:
+        that:
+          - lookup("env", "ORE_NO_MACBOOK_CICD_PIPELINE") == "true"
+    - name: テスト用にcowsayをインストールしておく
+      homebrew:
+        name: cowsay

@@ -1,15 +1,37 @@
+---
 name: CI
 
 on: [push]
 
+env:
+  # このパイプラインで実行しない処理をスキップするための環境識別用変数
+  ORE_NO_MACBOOK_CICD_PIPELINE: true
+
 jobs:
+  ut:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install molecule
+        run: pip3 install -r requirements.txt
+      - name: yamllint
+        run: yamllint -s .
+      - name: ansible-lint
+        run: ansible-lint
+      - name: molecule
+        run: |
+          base_dir=`pwd`
+          for molecule_dir in `find roles -name molecule -type d`
+          do
+            cd $molecule_dir/..
+            molecule test
+            cd $base_dir
+          done
   it:
     runs-on: macos-latest
     env:
       # ActionsのMacOSイメージはsudoパスワード無しで昇格可能
       ANSIBLE_BECOME_ASK_PASS: 0
-      # このパイプラインで実行しない処理をスキップするための環境識別用変数
-      ORE_NO_MACBOOK_CICD_PIPELINE: true
     steps:
       - uses: actions/checkout@v2
       - name: Install homebrew
@@ -20,11 +42,10 @@ jobs:
         run: ansible-playbook setup.yml --diff -v
       - name: Idempotent check
         run: |
-          res=`ansible-playbook setup.yml --diff -v`
-          echo $res
-          echo $res | grep localhost | tail -1 | grep -v -e "changed=[1-9][0-9]*"
+          ansible-playbook setup.yml --diff -v | tee idem.log
+          grep localhost idem.log | tail -1 | grep -v -e "changed=[1-9][0-9]*"
       - name: Dryrun check
         run: ansible-playbook setup.yml -C -v
       # TODO: AnsibleとかTestinfraでインテグレーションテスト
       # - name: Perform integrate test
-      #   run: 
+      #   run:

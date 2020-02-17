@@ -1,0 +1,14 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+    - name: slがインストールされているか
+      command: /usr/bin/which sl
+      changed_when: false
+      register: result_sl
+      failed_when: not result_sl.stdout
+    - name: cowsayがインストールされていないか
+      command: /usr/bin/which cowsay
+      changed_when: false
+      register: result_cowsay
+      failed_when: result_cowsay.stdout

@@ -1,0 +1,9 @@
+---
+- name: Verify
+  hosts: all
+  vars_files:
+    - ../../defaults/main.yml
+  tasks:
+    - name: ホスト名が狙ったやつになってるか
+      assert:
+        that: ansible_hostname == hostname
