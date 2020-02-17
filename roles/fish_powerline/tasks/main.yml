@@ -58,6 +58,24 @@
         executable: /usr/local/bin/fish
       when: not item in result.stdout_lines
       loop: "{{ fisher_packages }}"
+
+    - name: Docker用のコマンド保管ファイルを配置
+      get_url:
+        url: https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/fish/docker.fish
+        dest: ~/.config/fish/completions/docker.fish
+        force: true
+      # todo: OpenSSL問題(↑参照)
+      vars:
+        ansible_python_interpreter: python3
+
+    - name: docker-compose用のコマンド保管ファイルを配置
+      get_url:
+        url: https://raw.githubusercontent.com/docker/compose/master/contrib/completion/fish/docker-compose.fish
+        dest: ~/.config/fish/completions/docker-compose.fish
+        force: true
+      # todo: OpenSSL問題(↑参照)
+      vars:
+        ansible_python_interpreter: python3
   when: result_fish.stat.exists
 
 - name: フォントのインストール先ディレクトリ
@@ -70,7 +88,7 @@
   find:
     paths: ~/Library/Fonts
     patterns: '*.ttf'
-  register: result
+  register: result_font
 
 - block:
     - name: PowerlineインストールのためにGitリポジトリをクローン
@@ -78,24 +96,7 @@
         repo: https://github.com/powerline/fonts.git
         dest: /tmp/powerline_fonts
         depth: 1
+
     - name: Powerlineフォントをインストール
       command: /tmp/powerline_fonts/install.sh
-  when: result.matched == 0
-
-- name: Docker用のコマンド保管ファイルを配置
-  get_url:
-    url: https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/fish/docker.fish
-    dest: ~/.config/fish/completions/docker.fish
-    force: true
-  # todo: OpenSSL問題(↑参照)
-  vars:
-    ansible_python_interpreter: python3
-
-- name: docker-compose用のコマンド保管ファイルを配置
-  get_url:
-    url: https://raw.githubusercontent.com/docker/compose/master/contrib/completion/fish/docker-compose.fish
-    dest: ~/.config/fish/completions/docker-compose.fish
-    force: true
-  # todo: OpenSSL問題(↑参照)
-  vars:
-    ansible_python_interpreter: python3
+  when: result_font.matched == 0
