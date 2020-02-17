@@ -36,7 +36,7 @@
   # todo: もっと良い解決方法を見つける
   vars:
     ansible_python_interpreter: python3
-  when: result_fish_dir.exists
+  when: result_fish_dir.stat.exists
 
 - name: Fishermanのパッケージインストール状況確認
   shell:  # noqa 305
