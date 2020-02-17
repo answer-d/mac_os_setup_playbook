@@ -38,6 +38,11 @@
     ansible_python_interpreter: python3
   when: result_fish_dir.stat.exists
 
+- name: fishがインストールされてるか確認(dry-run用)
+  stat:
+    path: /usr/local/bin/fish
+  register: result_fish
+
 - name: Fishermanのパッケージインストール状況確認
   shell:  # noqa 305
     cmd: "fisher ls"
@@ -45,6 +50,7 @@
   changed_when: false
   check_mode: false
   register: result
+  when: result_fish.stat.exists
 
 - name: Fishermanでパッケージインストール
   shell:  # noqa 305
