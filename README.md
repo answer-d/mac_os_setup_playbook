@@ -2,42 +2,40 @@
 
 ## Installation
 
-1. Homebrewをインストールする
-   
-   ```console
-   $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-   ```
+- Homebrewをインストールする
 
-   XCodeのインストールもスクリプト内でやってくれるようになったみたい？便利だなー
+```console
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 
-2. Ansibleインストール
+- Ansibleインストール
 
-   ```console
-   $ brew install ansible
-   ```
+```console
+brew install ansible
+```
 
-3. このリポジトリクローン
+- このリポジトリクローン
 
-   ```console
-   $ git clone https://github.com/answer-d/mac_os_setup_playbook.git
-   $ cd mac_os_setup_playbook
-   ```
+```console
+git clone https://github.com/answer-d/mac_os_setup_playbook.git
+cd mac_os_setup_playbook
+```
 
-4. Playbook実行
+- Playbook実行
 
-   ```console
-   $ ansible-playbook setup.yml
-   ```
+```console
+ansible-playbook setup.yml
+```
 
 ## Memo
 
 - caskでパッケージインストールときにパスワード入力を求められることがある(直したい)
 - OSX環境設定調べるのむずすぎて手動で設定しないといけないとこもありあり
 - caskでインストールしたアプリケーションたちを起動した後はだいたい手動設定
-  - vscodeはロール作った
+    - vscodeはロール作った
 - vagrant 2.2.6とvirtualbox 6.1の組み合わせはvagrant upできない問題あり
-  - 解決法は[ここ](https://qiita.com/shuu1222/items/7a6d04172363be44025c)にあった、ありがてぇ…
-  - あまりにも限定的すぎるのでPlaybookにはしない
+    - 解決法は[ここ](https://qiita.com/shuu1222/items/7a6d04172363be44025c)にあった、ありがてぇ…
+    - あまりにも限定的すぎるのでPlaybookにはしない
 
 ## Refs
 
