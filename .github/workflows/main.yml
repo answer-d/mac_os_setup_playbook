@@ -21,7 +21,7 @@ jobs:
       - name: ansible-lint
         run: ansible-lint
       - name: markdownlint
-        run: mdl .
+        run: mdl -c .markdownlint.json .
       - name: molecule
         run: |
           base_dir=`pwd`
