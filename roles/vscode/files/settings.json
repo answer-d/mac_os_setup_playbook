@@ -18,6 +18,11 @@
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
 
+    // Markdownはタブサイズ4
+    "[markdown]": {
+        "editor.tabSize": 4,
+    },
+
     // ホワイトスペースを可視化
     "editor.renderWhitespace": "boundary",
 
