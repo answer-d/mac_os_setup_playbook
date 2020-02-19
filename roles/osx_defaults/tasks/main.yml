@@ -4,7 +4,7 @@
     path: ./osx_defaults_settings
     state: directory
 
-# todo: ここの実装もっとかっこよくしたい
+# todo: ここの実装もっとかっこよくしたい…
 - name: "defaults設定 - Finder"
   osx_defaults:
     domain: "{{ item.domain | default(omit) }}"
