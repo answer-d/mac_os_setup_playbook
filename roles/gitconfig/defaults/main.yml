@@ -1,0 +1,8 @@
+---
+# gitconfigで設定したいパラメータを記載
+#   `<key>: <value>` の形で記載する
+git_config:
+  system:
+    user.name: ansible_ha_iizo
+  global:
+    user.email: ansible_tuyotuyo@ansible.com

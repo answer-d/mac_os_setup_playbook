@@ -1,0 +1,9 @@
+---
+- name: Verify
+  hosts: all
+  vars_files:
+    - ../../defaults/main.yml
+  tasks:
+    - name: tbd
+      debug:
+        msg: 確認することがないわ
