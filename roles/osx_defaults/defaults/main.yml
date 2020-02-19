@@ -1,0 +1,37 @@
+---
+# defaults設定をめっちゃ俺ルールで分割して書く感じ
+# domainやhostは省略可能
+defaults:
+  finder:
+    - name: 隠しファイルを表示
+      domain: com.apple.finder
+      key: AppleShowAllFiles
+      type: bool
+      value: true
+
+  dock:
+    - name: 自動的に隠す
+      domain: com.apple.dock
+      key: autohide
+      type: int
+      value: 1
+
+  trackpad:
+    - name: 右下隅クリックを右クリックに設定
+      host: currentHost
+      key: com.apple.trackpad.trackpadCornerClickBehavior
+      type: int
+      value: 1
+
+  keyboard:
+    - name: キーのリピート
+      key: KeyRepeat
+      type: int
+      value: 1
+
+  menuextra:
+    - name: 省エネルギー設定：割合 (%) を表示
+      domain: com.apple.menuextra.battery
+      key: ShowPercent
+      type: string
+      value: True
