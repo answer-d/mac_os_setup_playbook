@@ -48,6 +48,19 @@
         "**/*ansible*/**/*.yml": "ansible",
     },
 
+    // markdownlintの設定
+    "markdownlint.config": {
+        "default": true,
+        "MD007": { "indent": 4 },
+        "MD013": { "line_length": 140 },
+        "no-hard-tabs": false,
+    },
+
+    // Markdownのコード整形を自動化
+    "editor.codeActionsOnSave": {
+        "source.fixAll.markdownlint": true,
+    },
+
     // Peacock builtin
     "peacock.favoriteColors": [
         {

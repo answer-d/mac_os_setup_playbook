@@ -14,10 +14,14 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install molecule
         run: pip3 install -r requirements.txt
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli
       - name: yamllint
         run: yamllint -s .
       - name: ansible-lint
         run: ansible-lint
+      - name: markdownlint
+        run: markdownlint -c .markdownlint.json .
       - name: molecule
         run: |
           base_dir=`pwd`
