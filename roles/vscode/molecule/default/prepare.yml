@@ -10,6 +10,7 @@
       shell:
         cmd: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         executable: /bin/bash
+      changed_when: false
     - name: Install VSCode by Homebrew Cask
       homebrew_cask:
         name: visual-studio-code
