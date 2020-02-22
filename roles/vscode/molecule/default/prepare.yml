@@ -14,3 +14,6 @@
     - name: Install VSCode by Homebrew Cask
       homebrew_cask:
         name: visual-studio-code
+    - name: ダウンロードしたアプリケーションの実行許可をすべてのアプリケーションに与える
+      command: spctl --master-disable
+      become: true
