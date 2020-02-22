@@ -1,0 +1,7 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+    - name: tbd
+      debug:
+        msg: 確認することがないわ
