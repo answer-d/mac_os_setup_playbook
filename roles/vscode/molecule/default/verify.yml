@@ -1,0 +1,11 @@
+---
+- name: Verify
+  hosts: all
+  vars_files:
+    - ../../defaults/main.yml
+  tasks:
+    - name: 狙った拡張機能がインストールされてるか
+      command: code --list-extensions
+      failed_when: not item in result.stdout_lines
+      register: result
+      loop: "{{ vscode_extensions }}"

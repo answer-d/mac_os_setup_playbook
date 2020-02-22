@@ -1,0 +1,15 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: localhostにdelegateする実装をしているので環境チェックしてパイプライン外で動かないようにする
+      assert:
+        that:
+          - lookup("env", "ORE_NO_MACBOOK_CICD_PIPELINE") == "true"
+    - name: Install Homebrew
+      shell:
+        cmd: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        executable: /bin/bash
+    - name: Install VSCode by Homebrew Cask
+      homebrew_cask:
+        name: visual-studio-code

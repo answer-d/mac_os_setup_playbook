@@ -1,0 +1,5 @@
+---
+# インストールする拡張機能の名前のリスト
+# 拡張機能の名前は検索して出てくる `markdownlint` じゃなくて `davidanson.vscode-markdownlint`みたいな名前を書く
+vscode_extensions:
+  - dracula-theme.theme-dracula
