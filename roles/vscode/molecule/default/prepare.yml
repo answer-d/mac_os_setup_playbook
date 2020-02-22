@@ -17,3 +17,5 @@
     - name: ダウンロードしたアプリケーションの実行許可をすべてのアプリケーションに与える
       command: spctl --master-disable
       become: true
+      register: result
+      changed_when: result.rc == 0
