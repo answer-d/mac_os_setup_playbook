@@ -1,0 +1,7 @@
+---
+dependencies:
+  - role: fish_powerline
+  - role: homebrew
+    vars:
+      homebrew_packages:
+        - {name: pyenv}

@@ -1,0 +1,21 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+    - name: pyenvが使用可能であること
+      command: which pyenv
+      changed_when: false
+      register: result_which_pyenv
+      failed_when: result_which_pyenv.rc != 0
+
+    - name: globalにpython3が設定されていること
+      command: pyenv global
+      changed_when: false
+      register: result_pyenv_global
+      failed_when: result_pyenv_global.stdout is not match("^3\..*$")
+
+    - name: brew doctorして正常ステータスになること
+      command: brew doctor
+      changed_when: false
+      register: result_brew_doctor
+      failed_when: result_brew_doctor.rc != 0
