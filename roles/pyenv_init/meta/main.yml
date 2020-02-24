@@ -5,3 +5,4 @@ dependencies:
     vars:
       homebrew_packages:
         - {name: pyenv}
+      homebrew_cask_packages: []

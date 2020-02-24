@@ -1,6 +1,7 @@
 ---
 - name: Prepare
   hosts: all
+  gather_facts: false
   tasks:
     - name: localhostにdelegateする実装をしているので環境チェックしてパイプライン外で動かないようにする
       assert:
@@ -14,5 +15,5 @@
     - name: ダウンロードしたアプリケーションの実行許可をすべてのアプリケーションに与える
       command: spctl --master-disable
       become: true
-      register: result
-      changed_when: result.rc == 0
+      register: result_spctl_cmd
+      changed_when: result_spctl_cmd.rc == 0

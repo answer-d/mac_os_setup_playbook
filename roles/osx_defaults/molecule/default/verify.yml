@@ -1,6 +1,7 @@
 ---
 - name: Verify
   hosts: all
+  gather_facts: false
   tasks:
     - name: 設定値格納用ディレクトリに今日日付のディレクトリが存在すること
       find:

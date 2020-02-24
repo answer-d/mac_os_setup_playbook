@@ -9,17 +9,17 @@
 - block:
     - name: インストール済みの拡張機能を取得
       command: code --list-extensions
-      register: result
+      register: result_extension_list
       changed_when: false
       check_mode: false
 
     - name: 拡張機能のインストール
       command: "code --install-extension {{ item }}"
       loop: "{{ vscode_extensions }}"
-      when: not item in result.stdout_lines
+      when: not item in result_extension_list.stdout_lines
 
     - name: settings.jsonをコピー
       copy:
         src: settings.json
         dest: ~/Library/Application Support/Code/User/settings.json
-  when: result_code_cmd_exists.stdout
+  when: result_code_cmd_exists.rc == 0
