@@ -8,6 +8,6 @@
     - name: 狙った拡張機能がインストールされてるか
       command: code --list-extensions
       changed_when: false
-      failed_when: not item in result.stdout_lines
-      register: result
+      failed_when: not item in result_extension_list.stdout_lines
+      register: result_extension_list
       loop: "{{ vscode_extensions }}"
