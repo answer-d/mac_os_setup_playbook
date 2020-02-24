@@ -25,9 +25,9 @@ jobs:
       - name: molecule
         run: |
           base_dir=`pwd`
-          for molecule_dir in `find roles -name molecule -type d`
+          for role_dir in `ls -d roles/*`
           do
-            cd $molecule_dir/..
+            cd $role_dir
             molecule test
             cd $base_dir
           done
