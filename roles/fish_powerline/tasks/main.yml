@@ -1,10 +1,9 @@
 ---
+# fish shell
 - name: fishコマンドが使用可能か確認(使用できなければ全体をスキップ)
-  command: which fish
-  changed_when: false
-  failed_when: false
-  check_mode: false
-  register: result_fish_cmd_exists
+  stat:
+    path: /usr/local/bin/fish
+  register: result_fish_cmd
 
 - block:
     - name: 使用可能なシェルの一覧にfishを追加
@@ -46,66 +45,60 @@
         ansible_python_interpreter: python3
       when: result_fish_dir.stat.exists
 
-    - name: fishがインストールされてるか確認(dry-run用)
-      stat:
-        path: /usr/local/bin/fish
-      register: result_fish
+    - name: Fishermanのパッケージインストール状況確認
+      shell:  # noqa 305
+        cmd: "fisher ls"
+        executable: /usr/local/bin/fish
+      changed_when: false
+      check_mode: false
+      register: result_fisherman_packages
 
-    - block:
-        - name: Fishermanのパッケージインストール状況確認
-          shell:  # noqa 305
-            cmd: "fisher ls"
-            executable: /usr/local/bin/fish
-          changed_when: false
-          check_mode: false
-          register: result
+    - name: Fishermanでパッケージインストール
+      shell:  # noqa 305
+        cmd: "fisher add {{ item }}"
+        executable: /usr/local/bin/fish
+      when: not item in result_fisherman_packages.stdout_lines
+      loop: "{{ fisher_packages }}"
 
-        - name: Fishermanでパッケージインストール
-          shell:  # noqa 305
-            cmd: "fisher add {{ item }}"
-            executable: /usr/local/bin/fish
-          when: not item in result.stdout_lines
-          loop: "{{ fisher_packages }}"
+    - name: Docker用のコマンド保管ファイルを配置
+      get_url:
+        url: https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/fish/docker.fish
+        dest: ~/.config/fish/completions/docker.fish
+        force: true
+      # todo: OpenSSL問題(↑参照)
+      vars:
+        ansible_python_interpreter: python3
 
-        - name: Docker用のコマンド保管ファイルを配置
-          get_url:
-            url: https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/fish/docker.fish
-            dest: ~/.config/fish/completions/docker.fish
-            force: true
-          # todo: OpenSSL問題(↑参照)
-          vars:
-            ansible_python_interpreter: python3
+    - name: docker-compose用のコマンド保管ファイルを配置
+      get_url:
+        url: https://raw.githubusercontent.com/docker/compose/master/contrib/completion/fish/docker-compose.fish
+        dest: ~/.config/fish/completions/docker-compose.fish
+        force: true
+      # todo: OpenSSL問題(↑参照)
+      vars:
+        ansible_python_interpreter: python3
+  when: result_fish_cmd.stat.exists
 
-        - name: docker-compose用のコマンド保管ファイルを配置
-          get_url:
-            url: https://raw.githubusercontent.com/docker/compose/master/contrib/completion/fish/docker-compose.fish
-            dest: ~/.config/fish/completions/docker-compose.fish
-            force: true
-          # todo: OpenSSL問題(↑参照)
-          vars:
-            ansible_python_interpreter: python3
-      when: result_fish.stat.exists
+# Powerline font
+- name: フォントのインストール先ディレクトリ
+  file:
+    path: ~/Library/Fonts
+    mode: 0700
+    state: directory
 
-    - name: フォントのインストール先ディレクトリ
-      file:
-        path: ~/Library/Fonts
-        mode: 0700
-        state: directory
+- name: Powerlineフォントが既にインストールされているか確認(されていたら全体をスキップ)
+  find:
+    paths: ~/Library/Fonts
+    patterns: '*.ttf'
+  register: result_font
 
-    - name: Powerlineフォントが既にインストールされているか確認
-      find:
-        paths: ~/Library/Fonts
-        patterns: '*.ttf'
-      register: result_font
+- block:
+    - name: PowerlineインストールのためにGitリポジトリをクローン
+      git:  # noqa 401
+        repo: https://github.com/powerline/fonts.git
+        dest: /tmp/powerline_fonts
+        depth: 1
 
-    - block:
-        - name: PowerlineインストールのためにGitリポジトリをクローン
-          git:  # noqa 401
-            repo: https://github.com/powerline/fonts.git
-            dest: /tmp/powerline_fonts
-            depth: 1
-
-        - name: Powerlineフォントをインストール
-          command: /tmp/powerline_fonts/install.sh
-      when: result_font.matched == 0
-  when: result_fish_cmd_exists.rc == 0
+    - name: Powerlineフォントをインストール
+      command: /tmp/powerline_fonts/install.sh
+  when: result_font.matched == 0
