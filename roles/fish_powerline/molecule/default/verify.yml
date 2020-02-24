@@ -1,12 +1,15 @@
 ---
 - name: Verify
   hosts: all
-  vars_files:
-    - ../../defaults/main.yml
   tasks:
-    - name: 狙った拡張機能がインストールされてるか
-      command: code --list-extensions
+    - name: fishシェルが使用されていること
+      shell: echo $SHELL
       changed_when: false
-      failed_when: not item in result.stdout_lines
-      register: result
-      loop: "{{ vscode_extensions }}"
+      failed_when: "fish not in {{ result_shell_env.stdout }} "
+      register: result_shell_env
+
+    - name: Fishermanが使用できること
+      command: fisher -v
+      changed_when: false
+      failed_when: result_fisher_version.rc != 0
+      register: result_fisher_version
