@@ -22,4 +22,4 @@
       copy:
         src: settings.json
         dest: ~/Library/Application Support/Code/User/settings.json
-  when: result_code_cmd_exists.stdout
+  when: result_code_cmd_exists.rc == 0

@@ -11,7 +11,7 @@
       command: pyenv versions
       check_mode: false
       changed_when: false
-      register: result
+      register: result_pyenv_versions
 
     - block:
         - name: python3.Xの最新をインストール
@@ -19,7 +19,8 @@
 
         - name: インストールしたpythonをglobalに設定
           shell: 'pyenv versions | grep -v system | xargs -I{} pyenv global {}'
-      when: result.stdout_lines|length == 1
+      # インストール済のバージョンが `system` のみの場合にブロック実行
+      when: result_pyenv_versions.stdout_lines|length == 1
 
     - name: pyenvにパスを通す(fish)
       blockinfile:
