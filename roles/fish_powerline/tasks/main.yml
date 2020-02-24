@@ -18,7 +18,6 @@
       user:
         name: "{{ ansible_user_id }}"
         shell: /usr/local/bin/fish
-      when: ansible_user_shell != "/usr/local/bin/fish"
 
     - name: fish用ディレクトリ作成
       file:
