@@ -1,0 +1,4 @@
+---
+# インストールするfisher拡張機能の名前のリスト
+fisher_packages:
+  - oh-my-fish/theme-bobthefish

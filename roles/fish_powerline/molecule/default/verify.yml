@@ -1,0 +1,16 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+    - name: fishシェルが使用されていること
+      assert:
+        that:
+          - ansible_user_shell == "/usr/local/bin/fish"
+
+    - name: Fishermanが使用できること
+      shell:  # noqa 305
+        cmd: fisher -v
+        executable: /usr/local/bin/fish
+      changed_when: false
+      failed_when: result_fisher_version.rc != 0
+      register: result_fisher_version
