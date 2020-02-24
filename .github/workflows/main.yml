@@ -27,9 +27,11 @@ jobs:
           base_dir=`pwd`
           for role_dir in `ls -d roles/*`
           do
+            echo "=== [ $role_dir ] ==="
             cd $role_dir
             molecule test
             cd $base_dir
+            echo "====================="
           done
   it:
     runs-on: macos-latest

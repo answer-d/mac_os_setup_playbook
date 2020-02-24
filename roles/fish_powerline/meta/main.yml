@@ -1,6 +1,6 @@
 ---
-# dependencies:
-#   - role: homebrew
-#     vars:
-#       homebrew_packages:
-#         - {name: fish}
+dependencies:
+  - role: homebrew
+    vars:
+      homebrew_packages:
+        - {name: fish}
