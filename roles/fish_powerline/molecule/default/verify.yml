@@ -5,7 +5,7 @@
     - name: fishシェルが使用されていること
       shell: echo $SHELL
       changed_when: false
-      failed_when: "fish not in {{ result_shell_env.stdout }} "
+      failed_when: "'fish' not in result_shell_env.stdout"
       register: result_shell_env
 
     - name: Fishermanが使用できること
