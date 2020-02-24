@@ -3,10 +3,9 @@
   hosts: all
   tasks:
     - name: fishシェルが使用されていること
-      shell: echo $SHELL
-      changed_when: false
-      failed_when: "'fish' not in result_shell_env.stdout"
-      register: result_shell_env
+      assert:
+        that:
+          - ansible_user_shell == "/usr/local/bin/fish"
 
     - name: Fishermanが使用できること
       command: fisher -v

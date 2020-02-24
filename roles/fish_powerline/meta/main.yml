@@ -4,3 +4,4 @@ dependencies:
     vars:
       homebrew_packages:
         - {name: fish}
+      homebrew_cask_packages: []
