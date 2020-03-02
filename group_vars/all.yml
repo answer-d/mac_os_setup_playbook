@@ -21,6 +21,12 @@ homebrew_packages:
   - {name: gibo}
   - {name: tree}
   - {name: pstree}
+  # https://qiita.com/navitime_tech/items/c249269a3b47666c784b
+  - {name: exa}  # lsの代替
+  - {name: bat}  # catの代替
+  - {name: fd}  # findの代替
+  - {name: procs}  # psの代替
+  - {name: ripgrep}  # grepの代替
 
 homebrew_cask_packages:
   - {name: docker}
