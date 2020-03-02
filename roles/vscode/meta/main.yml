@@ -1,7 +1,6 @@
 ---
 dependencies:
   - role: homebrew
-    vars:
-      homebrew_packages: []
-      homebrew_cask_packages:
-        - {name: visual-studio-code}
+    homebrew_packages: []
+    homebrew_cask_packages:
+      - {name: visual-studio-code}
