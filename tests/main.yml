@@ -1,0 +1,22 @@
+---
+- name: integration test
+  hosts: all
+  tasks:
+    - name: 狙ったHomebrewパッケージがちゃんと入っていること
+      command: /usr/local/bin/brew list
+      changed_when: false
+      register: result_brew_packages
+      loop: "{{ homebrew_packages }}"
+      when: item.state|default(omit) != "absent"
+      failed_when: not item.name in result_brew_packages.stdout
+    - name: 狙ったHomebrew Caskパッケージがちゃんと入っていること
+      command: /usr/local/bin/brew cask list
+      changed_when: false
+      register: result_brew_cask_packages
+      loop: "{{ homebrew_packages }}"
+      # adhoc: Github ActionsのMacOS環境でインストールできないパッケージを除外するため
+      when: |
+        lookup("env", "ORE_NO_MACBOOK_CICD_PIPELINE") != "true" or
+        (lookup("env", "ORE_NO_MACBOOK_CICD_PIPELINE") == "true" and
+          item.state|default(omit) != "absent" and not (item.it_skipped|default(false)))
+      failed_when: not item.name in result_brew_cask_packages.stdout
