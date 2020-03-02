@@ -2,7 +2,6 @@
 dependencies:
   - role: fish_powerline
   - role: homebrew
-    vars:
-      homebrew_packages:
-        - {name: pyenv}
-      homebrew_cask_packages: []
+    homebrew_packages:
+      - {name: pyenv}
+    homebrew_cask_packages: []

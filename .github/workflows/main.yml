@@ -54,6 +54,5 @@ jobs:
           grep localhost idem.log | tail -1 | grep -v -e "changed=[1-9][0-9]*"
       - name: Dryrun check (after)
         run: ansible-playbook setup.yml -C -v
-      # TODO: AnsibleとかTestinfraでインテグレーションテスト
-      # - name: Perform integrate test
-      #   run:
+      - name: Integration test
+        run: ansible-playbook tests/main.yml -v
