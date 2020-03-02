@@ -13,7 +13,7 @@
       command: /usr/local/bin/brew cask list
       changed_when: false
       register: result_brew_cask_packages
-      loop: "{{ homebrew_packages }}"
+      loop: "{{ homebrew_cask_packages }}"
       # adhoc: Github ActionsのMacOS環境でインストールできないパッケージを除外するため
       when: |
         lookup("env", "ORE_NO_MACBOOK_CICD_PIPELINE") != "true" or
