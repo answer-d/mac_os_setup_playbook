@@ -71,6 +71,7 @@ vscode_extensions:
   - 74th.monokai-charcoal-high-contrast
   - johnpapa.vscode-peacock
   - dracula-theme.theme-dracula
+  - skyapps.fish-vscode
 
 git_config:
   system:
