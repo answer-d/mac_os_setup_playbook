@@ -72,6 +72,7 @@ vscode_extensions:
   - johnpapa.vscode-peacock
   - dracula-theme.theme-dracula
   - skyapps.fish-vscode
+  - alefragnani.bookmarks
 
 git_config:
   system:
