@@ -1,10 +1,4 @@
 ---
-- name: brewパッケージのインストール
-  homebrew:
-    name: "{{ item.name }}"
-    state: "{{ item.state | default('present') }}"
-  loop: "{{ homebrew_packages }}"
-
 - name: caskパッケージのインストール
   homebrew_cask:
     name: "{{ item.name }}"
@@ -14,3 +8,9 @@
   when: |
     lookup("env", "ORE_NO_MACBOOK_CICD_PIPELINE") != "true" or
     (lookup("env", "ORE_NO_MACBOOK_CICD_PIPELINE") == "true" and not (item.it_skipped|default(false)))
+
+- name: brewパッケージのインストール
+  homebrew:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ homebrew_packages }}"
