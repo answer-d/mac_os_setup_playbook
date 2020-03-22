@@ -1,0 +1,11 @@
+---
+- name: fishコマンドが使用可能か確認(使用できなければ全体をスキップ)
+  stat:
+    path: /usr/local/bin/fish
+  register: result_fish_cmd
+
+- block:
+    - name: debug
+      debug:
+        msg: tbd
+  when: result_fish_cmd.stat.exists
