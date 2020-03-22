@@ -39,13 +39,13 @@
         name: homebrew
       tags:
         - package
-        - package_install
+        - homebrew
 
     - name: OS設定
       import_role:
         name: osx_defaults
       tags:
-        - osx
+        - osx_defaults
 
     - name: ホスト名設定
       import_role:
@@ -55,15 +55,15 @@
 
     - name: fish+powerline環境構築
       import_role:
-        name: fish_powerline
+        name: fish_powerline_install
       tags:
-        - fish_powerline
+        - fish_powerline_install
 
     - name: pyenvでpythonインストール
       import_role:
         name: pyenv_init
       tags:
-        - pyenv
+        - pyenv_init
 
     - name: vscode設定
       import_role:
