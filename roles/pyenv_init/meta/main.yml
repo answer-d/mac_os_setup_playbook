@@ -1,6 +1,6 @@
 ---
 dependencies:
-  - role: fish_powerline
+  - role: fish_powerline_install
   - role: homebrew
     homebrew_packages:
       - {name: pyenv}

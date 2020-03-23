@@ -1,0 +1,25 @@
+---
+- name: fishコマンドが使用可能か確認(使用できなければ全体をスキップ)
+  stat:
+    path: /usr/local/bin/fish
+  register: result_fish_cmd
+
+- block:
+    # aliasよりもabbrの方が良さげだったのでこちらで
+    - name: Abbreviations(略語)を追加
+      lineinfile:
+        path: ~/.config/fish/config.fish
+        line: "abbr -a -U -- {{ item.word }} {{ item.expansion }}"
+        state: present
+        create: true
+        backup: true
+      loop: "{{ fish_abbreviations }}"
+
+    - name: 環境変数を追加
+      lineinfile:
+        path: ~/.config/fish/config.fish
+        line: "set -x {{ item.name }} {{ item.value }}"
+        state: present
+        backup: true
+      loop: "{{ fish_environment_variables }}"
+  when: result_fish_cmd.stat.exists

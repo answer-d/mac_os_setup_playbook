@@ -54,6 +54,18 @@ fisher_packages:
   - 0rax/fish-bd
   - jethrokuan/z
 
+fish_abbreviations:
+  - {word: k, expansion: kubectl}
+  - {word: gs, expansion: git status}
+  - {word: gd, expansion: git diff}
+  - {word: gdc, expansion: git diff --cached}
+  - {word: ga, expansion: git add}
+  - {word: gc, expansion: git commit}
+  - {word: gp, expansion: git push}
+
+fish_environment_variables:
+  - {name: ANSIBLE_NOCOWS, value: 1}
+
 vscode_extensions:
   - MS-CEINTL.vscode-language-pack-ja
   - vscode-icons-team.vscode-icons

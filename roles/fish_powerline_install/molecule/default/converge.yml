@@ -4,4 +4,4 @@
   tasks:
     - name: Include role
       include_role:
-        name: fish_powerline
+        name: fish_powerline_install

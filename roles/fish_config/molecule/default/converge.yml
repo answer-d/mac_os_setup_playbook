@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include fish_config"
+      include_role:
+        name: "fish_config"

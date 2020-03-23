@@ -1,0 +1,31 @@
+---
+- name: Verify
+  hosts: all
+  vars_files:
+    - ../../defaults/main.yml
+  tasks:
+    - name: Abbreviations(略語)の一覧を取得
+      shell:  # noqa 305
+        cmd: abbr --list
+        executable: /usr/local/bin/fish
+      register: result_abbreviations
+      changed_when: false
+    - name: 狙ったAbbreviationsが登録されていること
+      assert:
+        that:
+          - item.word in result_abbreviations.stdout_lines
+      loop: "{{ fish_abbreviations }}"
+
+    - name: 環境変数の一覧を取得
+      shell:  # noqa 305
+        cmd: env
+        executable: /usr/local/bin/fish
+      register: result_environment_variables
+      changed_when: false
+    - name: 狙った環境変数が登録されていること
+      vars:
+        envvar_combined: "{{ item.name }}={{ item.value }}"
+      assert:
+        that:
+          - envvar_combined in result_environment_variables.stdout_lines
+      loop: "{{ fish_environment_variables }}"

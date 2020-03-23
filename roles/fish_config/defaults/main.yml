@@ -1,0 +1,5 @@
+---
+fish_abbreviations:
+  - {word: k, expansion: kubectl}
+fish_environment_variables:
+  - {name: ANSIBLE_NOCOWS, value: 1}
