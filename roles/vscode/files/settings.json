@@ -30,7 +30,7 @@
     "terminal.integrated.inheritEnv": false,
 
     // Ctrl+マウスホイールでズーム設定
-    "editor.mouseWheelZoom": true,
+    "editor.mouseWheelZoom": false,
 
     // ターミナルのバッファ行数
     "terminal.integrated.scrollback": 10000,
