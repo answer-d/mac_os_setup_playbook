@@ -59,6 +59,12 @@
       tags:
         - fish_powerline_install
 
+    - name: fishコンフィグ設定
+      import_role:
+        name: fish_config
+      tags:
+        - fish_config
+
     - name: pyenvでpythonインストール
       import_role:
         name: pyenv_init
