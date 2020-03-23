@@ -1,4 +1,2 @@
-# @20200216 v3使いたいのでソースからインストールして最新版使う
 molecule
-docker
 ansible-lint

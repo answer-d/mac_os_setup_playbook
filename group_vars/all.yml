@@ -86,6 +86,7 @@ vscode_extensions:
   - dracula-theme.theme-dracula
   - skyapps.fish-vscode
   - alefragnani.bookmarks
+  - ms-kubernetes-tools.vscode-kubernetes-tools
 
 git_config:
   system:
