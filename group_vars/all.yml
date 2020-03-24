@@ -87,6 +87,7 @@ vscode_extensions:
   - skyapps.fish-vscode
   - alefragnani.bookmarks
   - ms-kubernetes-tools.vscode-kubernetes-tools
+  - ipedrazas.kubernetes-snippets
 
 git_config:
   system:
