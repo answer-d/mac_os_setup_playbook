@@ -66,6 +66,13 @@ fish_abbreviations:
 fish_environment_variables:
   - {name: ANSIBLE_NOCOWS, value: 1}
 
+fish_aliases:
+  - {name: ls, definition: exa}
+  - {name: bat, definition: cat}
+  - {name: fd, definition: find}
+  - {name: procs, definition: ps}
+  - {name: rg, definition: grep}
+
 vscode_extensions:
   - MS-CEINTL.vscode-language-pack-ja
   - vscode-icons-team.vscode-icons
