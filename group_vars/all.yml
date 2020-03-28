@@ -68,10 +68,10 @@ fish_environment_variables:
 
 fish_aliases:
   - {name: ls, definition: exa}
-  - {name: bat, definition: cat}
-  - {name: fd, definition: find}
-  - {name: procs, definition: ps}
-  - {name: rg, definition: grep}
+  - {name: cat, definition: bat}
+  - {name: find, definition: fd}
+  - {name: ps, definition: procs}
+  - {name: grep, definition: rg}
 
 vscode_extensions:
   - MS-CEINTL.vscode-language-pack-ja
