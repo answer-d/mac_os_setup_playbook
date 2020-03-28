@@ -22,4 +22,12 @@
         state: present
         backup: true
       loop: "{{ fish_environment_variables }}"
+
+    - name: エイリアスを追加
+      lineinfile:
+        path: ~/.config/fish/config.fish
+        line: "alias {{ item.name }} '{{ item.definition }}'"
+        state: present
+        backup: true
+      loop: "{{ fish_aliases }}"
   when: result_fish_cmd.stat.exists
