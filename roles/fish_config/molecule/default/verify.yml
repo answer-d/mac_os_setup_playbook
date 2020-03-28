@@ -29,3 +29,24 @@
         that:
           - envvar_combined in result_environment_variables.stdout_lines
       loop: "{{ fish_environment_variables }}"
+
+    - name: エイリアスの一覧を取得
+      shell:  # noqa 305
+        cmd: alias
+        executable: /usr/local/bin/fish
+      register: result_aliases
+      changed_when: false
+    - name: 狙ったエイリアスが登録されていること(コマンドにスペースを含まない場合)
+      vars:
+        alias_line: "alias {{ item.name }} {{ item.definition }}"
+      assert:
+        that:
+          - alias_line in result_aliases.stdout_lines
+      loop: "{{ fish_aliases|rejectattr('definition', 'contains', ' ')|list }}"
+    - name: 狙ったエイリアスが登録されていること(コマンドにスペースを含む場合)
+      vars:
+        alias_line_spaced: "alias {{ item.name }} '{{ item.definition }}'"
+      assert:
+        that:
+          - alias_line_spaced in result_aliases.stdout_lines
+      loop: "{{ fish_aliases|selectattr('definition', 'contains', ' ')|list }}"
