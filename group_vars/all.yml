@@ -28,6 +28,7 @@ homebrew_packages:
   - {name: ripgrep}  # grepの代替
   - {name: kind}
   - {name: minikube}
+  - {name: helm}
 
 homebrew_cask_packages:
   - {name: docker}
