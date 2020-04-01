@@ -48,6 +48,7 @@ homebrew_cask_packages:
   - {name: google-japanese-ime}
   - {name: kindle}
   - {name: steam}
+  - {name: zoomus}
 
 fisher_packages:
   - oh-my-fish/theme-bobthefish
