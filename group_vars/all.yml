@@ -49,6 +49,7 @@ homebrew_cask_packages:
   - {name: kindle}
   - {name: steam}
   - {name: zoomus}
+  - {name: obs}
 
 fisher_packages:
   - oh-my-fish/theme-bobthefish
