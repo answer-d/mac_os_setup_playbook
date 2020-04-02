@@ -60,6 +60,9 @@ fisher_packages:
 
 fish_abbreviations:
   - {word: k, expansion: kubectl}
+  - {word: kg, expansion: kubectl get}
+  - {word: kd, expansion: kubectl describe}
+  - {word: g, expansion: git}
   - {word: gs, expansion: git status}
   - {word: gd, expansion: git diff}
   - {word: gdc, expansion: git diff --cached}
@@ -99,6 +102,7 @@ vscode_extensions:
   - alefragnani.bookmarks
   - ms-kubernetes-tools.vscode-kubernetes-tools
   - ipedrazas.kubernetes-snippets
+  - ms-vscode.go
 
 git_config:
   system:
