@@ -43,4 +43,8 @@
 
               command brew $argv
           end
+
+    - name: broken symlink対応
+      command: brew cleanup
+      changed_when: false
   when: result_pyenv_exists.stdout
