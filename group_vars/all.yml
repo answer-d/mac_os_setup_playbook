@@ -28,6 +28,8 @@ homebrew_packages:
   - {name: kind}
   - {name: minikube}
   - {name: helm}
+  - {name: gnupg}
+  - {name: sops}
 
 homebrew_cask_packages:
   - {name: docker}
