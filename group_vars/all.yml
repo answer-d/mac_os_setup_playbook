@@ -30,6 +30,7 @@ homebrew_packages:
   - {name: helm}
   - {name: gnupg}
   - {name: sops}
+  - {name: helmfile}
 
 homebrew_cask_packages:
   - {name: docker}
