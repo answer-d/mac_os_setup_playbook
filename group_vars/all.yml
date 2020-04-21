@@ -32,6 +32,7 @@ homebrew_packages:
   - {name: sops}
   - {name: helmfile}
   - {name: tflint}
+  - {name: terraform}
 
 homebrew_cask_packages:
   - {name: docker}
