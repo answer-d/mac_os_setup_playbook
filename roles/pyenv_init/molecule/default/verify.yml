@@ -14,9 +14,3 @@
       changed_when: false
       register: result_pyenv_global
       failed_when: result_pyenv_global.stdout is not match("^3\..*$")
-
-    - name: brew doctorして正常ステータスになること
-      command: brew doctor
-      changed_when: false
-      register: result_brew_doctor
-      failed_when: result_brew_doctor.rc != 0
