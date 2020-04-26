@@ -31,6 +31,8 @@ homebrew_packages:
   - {name: gnupg}
   - {name: sops}
   - {name: helmfile}
+  - {name: tflint}
+  - {name: terraform}
 
 homebrew_cask_packages:
   - {name: docker}
@@ -104,6 +106,7 @@ vscode_extensions:
   - ms-kubernetes-tools.vscode-kubernetes-tools
   - ipedrazas.kubernetes-snippets
   - ms-vscode.go
+  - mauve.terraform
 
 git_config:
   system:
