@@ -53,6 +53,7 @@ homebrew_cask_packages:
   - {name: steam}
   - {name: zoomus}
   - {name: obs}
+  - {name: skype}
 
 fisher_packages:
   - oh-my-fish/theme-bobthefish
