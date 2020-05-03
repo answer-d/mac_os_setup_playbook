@@ -108,6 +108,7 @@ vscode_extensions:
   - ipedrazas.kubernetes-snippets
   - ms-vscode.go
   - mauve.terraform
+  - github.vscode-pull-request-github
 
 git_config:
   system:
