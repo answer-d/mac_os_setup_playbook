@@ -109,7 +109,6 @@ vscode_extensions:
   - ms-vscode.go
   - mauve.terraform
   - github.vscode-pull-request-github
-  - PKief.material-icon-theme
   - CoenraadS.bracket-pair-colorizer-2
   - christian-kohler.path-intellisense
 
