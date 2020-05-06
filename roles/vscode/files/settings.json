@@ -61,6 +61,21 @@
         "source.fixAll.markdownlint": true,
     },
 
+    // Terraform TF 0.12+ HCL対応
+    "terraform.indexing": {
+        "enabled": false,
+        "liveIndexing": false,
+        "delay": 500,
+        "exclude": [
+            ".terraform/**/*",
+            "**/.terraform/**/*"
+        ]
+    },
+    "terraform.languageServer": {
+        "enabled": true,
+        "args": []
+    },
+
     // Peacock builtin
     "peacock.favoriteColors": [
         {
