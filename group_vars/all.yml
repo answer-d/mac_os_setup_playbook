@@ -120,6 +120,7 @@ git_config:
   global:
     user.name: あんでぃー
     user.email: bboy.answer.d@gmail.com
+    pull.ff: only
 
 defaults:
   finder:
