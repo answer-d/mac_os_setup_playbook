@@ -107,7 +107,6 @@ vscode_extensions:
   - alefragnani.bookmarks
   - ms-kubernetes-tools.vscode-kubernetes-tools
   - ipedrazas.kubernetes-snippets
-  - ms-vscode.go
   - mauve.terraform
   - github.vscode-pull-request-github
   - CoenraadS.bracket-pair-colorizer-2
