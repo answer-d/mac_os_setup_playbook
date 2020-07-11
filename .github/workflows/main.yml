@@ -33,6 +33,9 @@ jobs:
             cd $base_dir
             echo "====================="
           done
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
   it:
     runs-on: macos-latest
     env:

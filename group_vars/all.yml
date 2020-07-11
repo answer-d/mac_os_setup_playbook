@@ -100,16 +100,10 @@ vscode_extensions:
   - DavidAnson.vscode-markdownlint
   - wholroyd.jinja
   - eamodio.gitlens
-  - 74th.monokai-charcoal-high-contrast
-  - johnpapa.vscode-peacock
   - dracula-theme.theme-dracula
   - skyapps.fish-vscode
-  - alefragnani.bookmarks
   - ms-kubernetes-tools.vscode-kubernetes-tools
-  - ipedrazas.kubernetes-snippets
-  - ms-vscode.go
-  - mauve.terraform
-  - github.vscode-pull-request-github
+  - hashicorp.terraform
   - CoenraadS.bracket-pair-colorizer-2
   - christian-kohler.path-intellisense
   - ms-vscode-remote.vscode-remote-extensionpack
@@ -120,6 +114,7 @@ git_config:
   global:
     user.name: あんでぃー
     user.email: bboy.answer.d@gmail.com
+    pull.ff: only
 
 defaults:
   finder:
