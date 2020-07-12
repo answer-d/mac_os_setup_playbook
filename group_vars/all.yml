@@ -35,6 +35,7 @@ homebrew_packages:
   - {name: terraform}
   - {name: packer}
   - {name: kubebuilder}
+  - {name: kustomize}
 
 homebrew_cask_packages:
   - {name: docker}
