@@ -34,6 +34,7 @@ homebrew_packages:
   - {name: tflint}
   - {name: terraform}
   - {name: packer}
+  - {name: kubebuilder}
 
 homebrew_cask_packages:
   - {name: docker}
@@ -77,6 +78,8 @@ fish_abbreviations:
 
 fish_environment_variables:
   - {name: ANSIBLE_NOCOWS, value: 1}
+  - {name: GOPATH, value: $HOME/go}
+  - {name: PATH, value: "$GOPATH $PATH"}
 
 fish_aliases:
   - {name: ls, definition: exa}
