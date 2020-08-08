@@ -1,4 +1,10 @@
 ---
+- name: HomeBrewのtapリポジトリ追加
+  homebrew_tap:
+    tap: "{{ item }}"
+    state: present
+  loop: "{{ homebrew_tap_repos }}"
+
 - name: caskパッケージのインストール
   homebrew_cask:
     name: "{{ item.name }}"

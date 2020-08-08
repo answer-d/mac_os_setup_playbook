@@ -1,4 +1,8 @@
 ---
+# 追加するtapリポジトリのリスト
+homebrew_tap_repos:
+  - homebrew/cask
+
 # brew installしたいパッケージに関するdictのリスト
 #   name: <str>
 #   state: [present|absent] default=present

@@ -1,4 +1,8 @@
 ---
+homebrew_tap_repos:
+  - homebrew/cask
+  - aws/tap
+
 homebrew_packages:
   - {name: autoconf}
   - {name: gifsicle}
@@ -32,10 +36,12 @@ homebrew_packages:
   - {name: sops}
   - {name: helmfile}
   - {name: tflint}
-  - {name: terraform}
+  - {name: terraform, state: absent}
   - {name: packer}
   - {name: kubebuilder}
   - {name: kustomize}
+  - {name: tfenv}
+  - {name: aws-sam-cli}
 
 homebrew_cask_packages:
   - {name: docker}
