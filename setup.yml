@@ -80,3 +80,10 @@
         name: vimrc
       tags:
         - vimrc
+
+    - name: nodebrew directory
+      file:
+        path: ~/.nodebrew/src
+        state: directory
+      tags:
+        - nodejs
