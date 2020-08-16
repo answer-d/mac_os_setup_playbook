@@ -88,7 +88,8 @@ fish_environment_variables:
   - {name: ANSIBLE_NOCOWS, value: 1}
   - {name: GOPATH, value: $HOME/go}
   - {name: PATH, value: "$GOPATH $PATH"}
-  - {name: PATH, value: "$GOPATH $HOME/.nodebrew/current/bin $PATH"}
+  - {name: PATH, value: "$HOME/.nodebrew/current/bin $PATH"}
+  - {name: theme_color_scheme, value: dracula}
 
 fish_aliases:
   - {name: ls, definition: exa}
