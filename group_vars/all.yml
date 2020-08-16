@@ -1,4 +1,8 @@
 ---
+homebrew_tap_repos:
+  - homebrew/cask
+  - aws/tap
+
 homebrew_packages:
   - {name: autoconf}
   - {name: gifsicle}
@@ -32,10 +36,13 @@ homebrew_packages:
   - {name: sops}
   - {name: helmfile}
   - {name: tflint}
-  - {name: terraform}
+  - {name: terraform, state: absent}
   - {name: packer}
   - {name: kubebuilder}
   - {name: kustomize}
+  - {name: tfenv}
+  - {name: aws-sam-cli}
+  - {name: nodebrew}
 
 homebrew_cask_packages:
   - {name: docker}
@@ -81,6 +88,7 @@ fish_environment_variables:
   - {name: ANSIBLE_NOCOWS, value: 1}
   - {name: GOPATH, value: $HOME/go}
   - {name: PATH, value: "$GOPATH $PATH"}
+  - {name: PATH, value: "$GOPATH $HOME/.nodebrew/current/bin $PATH"}
 
 fish_aliases:
   - {name: ls, definition: exa}

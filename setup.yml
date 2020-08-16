@@ -3,14 +3,6 @@
   hosts: all
 
   pre_tasks:
-    - name: HomeBrewのtapリポジトリ追加
-      homebrew_tap:
-        tap: "{{ item }}"
-        state: present
-      loop:
-        - homebrew/cask
-      tags:
-        - package
     - name: HomeBrewのアップデート
       homebrew:
         update_homebrew: true
@@ -88,3 +80,10 @@
         name: vimrc
       tags:
         - vimrc
+
+    - name: nodebrew directory
+      file:
+        path: ~/.nodebrew/src
+        state: directory
+      tags:
+        - nodejs
