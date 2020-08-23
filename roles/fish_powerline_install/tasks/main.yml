@@ -10,6 +10,7 @@
       lineinfile:
         path: /etc/shells
         line: /usr/local/bin/fish
+        mode: 0644
         backup: yes
       become: true
 
@@ -22,8 +23,8 @@
     - name: fish用ディレクトリ作成
       file:
         path: ~/.config/fish/functions/
+        mode: 0755
         state: directory
-        recurse: true
 
     - name: ディレクトリ存在確認(dry-run用)
       stat:

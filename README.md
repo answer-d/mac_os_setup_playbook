@@ -1,4 +1,4 @@
-# MacOSを構築するPlaybook
+# 俺のMacOSを構築するPlaybook
 
 ![GitHub Actions status](https://github.com/answer-d/mac_os_setup_playbook/workflows/CI/badge.svg)
 
