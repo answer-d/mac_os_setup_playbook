@@ -90,6 +90,7 @@ fish_environment_variables:
   - {name: PATH, value: "$GOPATH $PATH"}
   - {name: PATH, value: "$HOME/.nodebrew/current/bin $PATH"}
   - {name: theme_color_scheme, value: dracula}
+  - {name: OBJC_DISABLE_INITIALIZE_FORK_SAFETY, value: YES}
 
 fish_aliases:
   - {name: ls, definition: exa}
