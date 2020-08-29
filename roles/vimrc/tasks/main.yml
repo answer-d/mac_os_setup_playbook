@@ -4,8 +4,10 @@
   copy:
     src: .vimrc
     dest: ~/
+    mode: 0644
 
 - name: .gvimrcのコピー
   copy:
     src: .gvimrc
     dest: ~/
+    mode: 0644

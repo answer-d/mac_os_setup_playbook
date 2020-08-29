@@ -63,11 +63,12 @@
       tags:
         - pyenv_init
 
-    - name: vscode設定
-      import_role:
-        name: vscode
-      tags:
-        - vscode
+    # Settings Sync使用するようにしたのでPlaybook実行対象から除外
+    # - name: vscode設定
+    #   import_role:
+    #     name: vscode
+    #   tags:
+    #     - vscode
 
     - name: gitconfig
       import_role:

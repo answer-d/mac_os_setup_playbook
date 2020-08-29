@@ -2,6 +2,7 @@
 - name: 設定値格納用ディレクトリ作成
   file:
     path: ./osx_defaults_settings
+    mode: 0755
     state: directory
 
 # todo: ここの実装もっとかっこよくしたい…

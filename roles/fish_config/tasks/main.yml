@@ -10,6 +10,7 @@
       lineinfile:
         path: ~/.config/fish/config.fish
         line: "abbr -a -U -- {{ item.word }} {{ item.expansion }}"
+        mode: 0644
         state: present
         create: true
         backup: true
@@ -19,6 +20,7 @@
       lineinfile:
         path: ~/.config/fish/config.fish
         line: "set -x {{ item.name }} {{ item.value }}"
+        mode: 0644
         state: present
         backup: true
       loop: "{{ fish_environment_variables }}"
@@ -27,6 +29,7 @@
       lineinfile:
         path: ~/.config/fish/config.fish
         line: "alias {{ item.name }} '{{ item.definition }}'"
+        mode: 0644
         state: present
         backup: true
       loop: "{{ fish_aliases }}"

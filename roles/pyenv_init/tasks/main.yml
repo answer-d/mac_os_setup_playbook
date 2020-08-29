@@ -28,6 +28,7 @@
         marker: "# {mark} ANSIBLE MANAGED BLOCK pyenv init"
         content: eval (pyenv init - | source)
         create: true
+        mode: 0644
 
     # https://qiita.com/komo/items/450180282766ffb250ba
     - name: homebrewとpyenvの干渉問題を解決するためのエイリアスを追加
