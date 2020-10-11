@@ -43,6 +43,7 @@ homebrew_packages:
   - {name: tfenv}
   - {name: aws-sam-cli}
   - {name: nodebrew}
+  - {name: nkf}
 
 homebrew_cask_packages:
   - {name: docker}
