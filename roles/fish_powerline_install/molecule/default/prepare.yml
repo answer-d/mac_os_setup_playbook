@@ -9,6 +9,6 @@
           - lookup("env", "ORE_NO_MACBOOK_CICD_PIPELINE") == "true"
     - name: Install Homebrew
       shell:
-        cmd: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        cmd: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
         executable: /bin/bash
       changed_when: false

@@ -3,11 +3,11 @@
 ![GitHub Actions status](https://github.com/answer-d/mac_os_setup_playbook/workflows/CI/badge.svg)
 
 ## Installation
-  
+
 - Homebrewをインストールする
 
 ```console
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
 - Ansibleインストール
