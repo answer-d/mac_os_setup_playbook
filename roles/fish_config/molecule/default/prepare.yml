@@ -10,5 +10,4 @@
     - name: Install Homebrew
       shell:
         cmd: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-        executable: /bin/bash
       changed_when: false
